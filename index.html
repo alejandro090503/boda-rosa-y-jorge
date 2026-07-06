@@ -202,6 +202,37 @@ section{padding:64px 22px}
 }
 .btn-olive:active{background:var(--olive-lt);transform:scale(.96)}
 
+/* ── CALENDAR PULSE ──────────────────────────────────── */
+@keyframes calPulse{
+  0%,100%{box-shadow:0 6px 28px rgba(117,140,98,.35)}
+  50%{box-shadow:0 8px 36px rgba(117,140,98,.55), 0 0 0 8px rgba(117,140,98,.12)}
+}
+
+/* ── 3D WHEEL GALLERY ────────────────────────────────── */
+.wheel-card{
+  position:absolute;width:200px;height:280px;
+  left:50%;top:50%;margin-left:-100px;margin-top:-140px;
+  border-radius:18px;overflow:hidden;
+  border:2px solid rgba(117,140,98,.30);
+  box-shadow:0 12px 40px rgba(58,65,42,.22);
+  user-select:none;-webkit-user-select:none;
+}
+.wheel-card img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;pointer-events:none}
+.wheel-ring.dragging{cursor:grabbing}
+
+/* ── #D4C5B2 ACCENT (35% presence) ───────────────────── */
+#countdown{background:linear-gradient(180deg,var(--ink) 0%,#f3efe6 50%,var(--ink) 100%)}
+#calendar{background:#f0ead9}
+#itinerary{background:linear-gradient(180deg,var(--ink) 0%,rgba(212,197,178,.18) 50%,var(--ink) 100%)}
+#dresscode{background:linear-gradient(180deg,rgba(212,197,178,.15) 0%,rgba(212,197,178,.08) 100%)}
+#gifts{background:linear-gradient(180deg,var(--ink) 0%,#f5f0e6 50%,var(--ink) 100%)}
+#rsvp{background:linear-gradient(180deg,rgba(212,197,178,.12) 0%,rgba(212,197,178,.06) 100%)}
+.loc-card{border-color:var(--olive-lt) !important;background:linear-gradient(180deg,#fff 0%,rgba(212,197,178,.12) 100%) !important}
+.gline{background:linear-gradient(to right,transparent,var(--olive-lt),transparent) !important}
+.dc-note{background:rgba(212,197,178,.18);border-left:3px solid var(--olive-lt)}
+#gallery{background:linear-gradient(180deg,var(--ink) 0%,#f3efe6 50%,var(--ink) 100%)}
+footer{background:#f0ead9}
+
 /* ── HERO ─────────────────────────────────────────────── */
 #hero{
   min-height:100svh;display:flex;flex-direction:column;
@@ -1750,7 +1781,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 <section id="hero">
   <!-- Background photo (parallax target) -->
   <div class="h-bg" id="heroBg">
-    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=900&h=1400&fit=crop&q=82"
+    <img src="assets/gallery/foto-3.jpg"
          alt="Rosa y Jorge" loading="eager" id="heroPic">
   </div>
   <div class="h-ov"></div>
@@ -1806,6 +1837,12 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
     <div class="gline" style="margin-top:32px" id="hLine"></div>
 
+    <p class="h-children" id="hChildren" style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cream);opacity:.85;line-height:1.8;margin-top:28px;text-align:center;letter-spacing:.5px">
+      En compañía de nuestros hijos<br>
+      <span style="font-family:'Great Vibes',cursive;font-size:26px;color:var(--olive);letter-spacing:1px">Misael, Stephano &amp; Thiago</span><br>
+      queremos invitarlos a nuestro matrimonio
+    </p>
+
     <div class="h-date-wrap" id="hDate">
       <p class="h-date">28 · Noviembre · 2026</p>
       <p class="h-city">Lima · Perú</p>
@@ -1815,6 +1852,69 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="h-scroll" id="hScroll">
     <div class="h-scroll-line"></div>
     <span>Desliza</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════ UBICACIÓN (debajo del hero) ═══════════════ -->
+<section id="location">
+  <span class="lbl">¿Dónde y cuándo?</span>
+  <h2 class="ttl">La Celebración</h2>
+  <div class="gline"></div>
+
+  <div class="loc-card">
+    <div class="loc-wave loc-wave-top" aria-hidden="true">
+      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
+        <path d="M0,14 Q100,4 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(168,180,120,.42)" stroke-width="1"/>
+        <path d="M0,20 Q100,10 200,20 T400,20 T600,20 T800,20 T1000,20 T1200,20 T1400,20 T1600,20" fill="none" stroke="rgba(168,180,120,.22)" stroke-width=".8"/>
+      </svg>
+    </div>
+
+    <p class="loc-type">✦  Ceremonia &amp; Recepción</p>
+    <h3 class="loc-name">Fundo Pozo Santo</h3>
+
+    <div style="display:flex;justify-content:center;gap:32px;margin:18px 0 8px">
+      <div class="loc-medallion">
+        <svg class="loc-med-svg" viewBox="0 0 120 120">
+          <circle class="loc-med-track" cx="60" cy="60" r="55"/>
+          <circle class="loc-med-arc"   cx="60" cy="60" r="55"/>
+        </svg>
+        <div class="loc-rotor"><span class="loc-dot"></span></div>
+        <div class="loc-med-ctr">
+          <span class="loc-med-time">5:30</span>
+          <span class="loc-med-ampm">PM</span>
+        </div>
+      </div>
+      <div class="loc-medallion">
+        <svg class="loc-med-svg" viewBox="0 0 120 120">
+          <circle class="loc-med-track" cx="60" cy="60" r="55"/>
+          <circle class="loc-med-arc"   cx="60" cy="60" r="55"/>
+        </svg>
+        <div class="loc-rotor loc-rotor-rev"><span class="loc-dot"></span></div>
+        <div class="loc-med-ctr">
+          <span class="loc-med-time">6:30</span>
+          <span class="loc-med-ampm">PM</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:32px;margin-bottom:16px">
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--olive);opacity:.7">Ceremonia</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--olive);opacity:.7">Recepción</span>
+    </div>
+
+    <p class="loc-addr">Lima · Perú</p>
+    <a href="https://maps.app.goo.gl/MT8DfSmzmtZr16zg6?g_st=ac"
+       target="_blank" rel="noopener" class="btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Ver en GPS / Google Maps
+    </a>
+
+    <div class="loc-wave loc-wave-bot" aria-hidden="true">
+      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
+        <path d="M0,14 Q100,24 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(168,180,120,.42)" stroke-width="1"/>
+        <path d="M0,8 Q100,18 200,8 T400,8 T600,8 T800,8 T1000,8 T1200,8 T1400,8 T1600,8" fill="none" stroke="rgba(168,180,120,.22)" stroke-width=".8"/>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -1897,88 +1997,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 </section>
 
 
-<!-- ═══════════════ 3. UBICACIONES ═══════════════════ -->
-<section id="location">
-  <span class="lbl">¿Dónde y cuándo?</span>
-  <h2 class="ttl">La Celebración</h2>
-  <div class="gline"></div>
-
-  <div class="loc-card">
-    <div class="loc-wave loc-wave-top" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,4 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(168,180,120,.42)" stroke-width="1"/>
-        <path d="M0,20 Q100,10 200,20 T400,20 T600,20 T800,20 T1000,20 T1200,20 T1400,20 T1600,20" fill="none" stroke="rgba(168,180,120,.22)" stroke-width=".8"/>
-      </svg>
-    </div>
-
-    <p class="loc-type">✦  Ceremonia Religiosa</p>
-    <h3 class="loc-name">Por confirmar</h3>
-
-    <div class="loc-medallion">
-      <svg class="loc-med-svg" viewBox="0 0 120 120">
-        <circle class="loc-med-track" cx="60" cy="60" r="55"/>
-        <circle class="loc-med-arc"   cx="60" cy="60" r="55"/>
-      </svg>
-      <div class="loc-rotor"><span class="loc-dot"></span></div>
-      <div class="loc-med-ctr">
-        <span class="loc-med-time">5:30</span>
-        <span class="loc-med-ampm">PM</span>
-      </div>
-    </div>
-
-    <p class="loc-addr">Lima · Perú</p>
-    <a href="https://maps.app.goo.gl/MT8DfSmzmtZr16zg6?g_st=ac"
-       target="_blank" rel="noopener" class="btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Ver en GPS / Google Maps
-    </a>
-
-    <div class="loc-wave loc-wave-bot" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,24 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(168,180,120,.42)" stroke-width="1"/>
-        <path d="M0,8 Q100,18 200,8 T400,8 T600,8 T800,8 T1000,8 T1200,8 T1400,8 T1600,8" fill="none" stroke="rgba(168,180,120,.22)" stroke-width=".8"/>
-      </svg>
-    </div>
-  </div>
-
-  <div class="loc-card">
-    <div class="loc-wave loc-wave-top" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,4 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(168,180,120,.42)" stroke-width="1"/>
-        <path d="M0,20 Q100,10 200,20 T400,20 T600,20 T800,20 T1000,20 T1200,20 T1400,20 T1600,20" fill="none" stroke="rgba(168,180,120,.22)" stroke-width=".8"/>
-      </svg>
-    </div>
-
-    <p class="loc-type">✦  Recepción</p>
-    <h3 class="loc-name">Por confirmar</h3>
-
-    <div class="loc-medallion">
-      <svg class="loc-med-svg" viewBox="0 0 120 120">
-        <circle class="loc-med-track" cx="60" cy="60" r="55"/>
-        <circle class="loc-med-arc"   cx="60" cy="60" r="55"/>
-      </svg>
-      <div class="loc-rotor loc-rotor-rev"><span class="loc-dot"></span></div>
-      <div class="loc-med-ctr">
-        <span class="loc-med-time">6:30</span>
-        <span class="loc-med-ampm">PM</span>
-      </div>
-    </div>
-
-    <p class="loc-addr">Lima · Perú<br>Dirección por confirmar</p>
-    <a href="#"
-       target="_blank" rel="noopener" class="btn" style="pointer-events:none;opacity:.5">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Ver en GPS / Google Maps
-    </a>
-
-    <div class="loc-wave loc-wave-bot" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,24 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(168,180,120,.42)" stroke-width="1"/>
-        <path d="M0,8 Q100,18 200,8 T400,8 T600,8 T800,8 T1000,8 T1200,8 T1400,8 T1600,8" fill="none" stroke="rgba(168,180,120,.22)" stroke-width=".8"/>
-      </svg>
-    </div>
-  </div>
-</section>
+<!-- Location moved above countdown -->
 
 
 <!-- ═══════════════ 4. CALENDAR ══════════════════════ -->
@@ -1987,11 +2006,11 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <h2 class="ttl" style="font-size:26px">Guarda la Fecha</h2>
   <div class="gline"></div>
   <p class="cal-sub">Agrega nuestra boda a tu calendario<br>para no perderte ni un momento.</p>
-  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Rosa+%26+Jorge&dates=20261128T173000/20261129T020000&details=Ceremonia+5:30+PM.+Recepci%C3%B3n+6:30+PM.&location=Lima%2C+Per%C3%BA"
+  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Rosa+%26+Jorge&dates=20261128T173000/20261129T020000&details=Ceremonia+5:30+PM+%7C+Recepci%C3%B3n+6:30+PM+%7C+Fundo+Pozo+Santo&location=Fundo+Pozo+Santo%2C+Lima%2C+Per%C3%BA"
      target="_blank" rel="noopener" id="calBtn"
-     class="btn btn-olive" style="max-width:310px;margin:0 auto;display:flex">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    Agregar a Google Calendar
+     class="btn btn-olive" style="max-width:340px;margin:0 auto;display:flex;padding:18px 24px;font-size:15px;font-weight:400;letter-spacing:1px;border-radius:50px;box-shadow:0 6px 28px rgba(117,140,98,.35);animation:calPulse 2.5s ease-in-out infinite">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Guardar la Fecha
   </a>
 </section>
 
@@ -2017,23 +2036,23 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </div>
     <div class="tl-row" data-side="left">
       <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">7:30 PM</p><p class="tl-ev">Cena</p><p class="tl-de">Menú de gala · Servicio en mesa</p></div>
+      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Cena</p><p class="tl-de">Menú de gala · Servicio en mesa</p></div>
     </div>
     <div class="tl-row" data-side="right">
       <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">9:00 PM</p><p class="tl-ev">Baile de Novios</p><p class="tl-de">El primer vals de Rosa &amp; Jorge</p></div>
+      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Baile de Novios</p><p class="tl-de">El primer vals de Rosa &amp; Jorge</p></div>
     </div>
     <div class="tl-row" data-side="left">
       <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">10:00 PM</p><p class="tl-ev">Baile General</p><p class="tl-de">¡Todos a la pista!</p></div>
+      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Baile General</p><p class="tl-de">¡Todos a la pista!</p></div>
     </div>
     <div class="tl-row" data-side="right">
       <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">11:00 PM</p><p class="tl-ev">Brindis</p><p class="tl-de">Por los novios · Por el amor</p></div>
+      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Brindis</p><p class="tl-de">Por los novios · Por el amor</p></div>
     </div>
     <div class="tl-row" data-side="left">
       <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">11:30 PM</p><p class="tl-ev">Fiesta</p><p class="tl-de">¡Que comience la celebración!</p></div>
+      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Fiesta</p><p class="tl-de">¡Que comience la celebración!</p></div>
     </div>
   </div>
 </section>
@@ -2097,12 +2116,24 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <span class="lbl">Vestimenta</span>
   <h2 class="ttl">Código de Vestimenta</h2>
   <div class="gline"></div>
-  <p class="dc-sub"><em style="font-family:'Cormorant Garamond',serif;font-size:17px">Elegante de noche</em><br>Ayúdanos a crear un ambiente especial<br>vistiéndote acorde a la ocasión.</p>
-  <div class="palette" id="palette">
-    <div class="pal-item"><div class="pal-sw" style="background:#FFFFFF;border:1px solid #ddd"></div><p class="pal-nm">Blanco</p></div>
-    <div class="pal-item"><div class="pal-sw" style="background:#D4C5B2"></div><p class="pal-nm">Beige</p></div>
-    <div class="pal-item"><div class="pal-sw" style="background:#758c62"></div><p class="pal-nm">Olivo</p></div>
+
+  <p class="dc-main-label" style="font-family:'Great Vibes',cursive;font-size:38px;color:var(--olive);text-align:center;margin:16px 0 8px">Elegante de noche</p>
+  <p class="dc-sub" style="margin-top:6px">Ayúdanos a crear un ambiente especial<br>vistiéndote acorde a la ocasión.</p>
+
+  <div class="dc-figures" style="display:flex;align-items:center;justify-content:center;gap:30px;margin:28px auto;max-width:380px">
+    <div class="dc-fig" style="display:flex;flex-direction:column;align-items:center;gap:14px;flex:1">
+      <img src="assets/caballero.png" alt="Caballero, traje formal" loading="lazy" style="height:220px;width:auto;display:block;filter:drop-shadow(0 6px 14px rgba(58,65,42,.22))">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;letter-spacing:1px;color:var(--olive)">Caballeros</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(58,65,42,.65);margin-top:-8px">traje formal</span>
+    </div>
+    <div style="width:1px;height:180px;background:linear-gradient(to bottom,transparent,var(--olive-lt),transparent)" aria-hidden="true"></div>
+    <div class="dc-fig" style="display:flex;flex-direction:column;align-items:center;gap:14px;flex:1">
+      <img src="assets/dama.png" alt="Dama, vestido formal" loading="lazy" style="height:220px;width:auto;display:block;filter:drop-shadow(0 6px 14px rgba(58,65,42,.22))">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;letter-spacing:1px;color:var(--olive)">Damas</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(58,65,42,.65);margin-top:-8px">vestido</span>
+    </div>
   </div>
+
   <div class="dc-note" id="dcNote">
     <strong>Damas — por favor evitar:</strong>
     Colores pasteles, en especial blanco, beige, nude y gris (reservados para la novia).
@@ -2110,115 +2141,26 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 </section>
 
 
-<!-- ═══════════════ 10. FAMILIA · CONSTELACIÓN DE MEDALLONES ═══════════════ -->
-<section id="family">
-  <span class="lbl">Con amor de</span>
-  <h2 class="ttl">Padres y Padrinos</h2>
-  <div class="gline"></div>
-
-  <div class="fam-grove" id="famGrove">
-    <div class="fam-thread" aria-hidden="true"></div>
-
-    <p class="fam-group-title">✦ Nuestros Padres ✦</p>
-
-    <div class="fam-node">
-      <div class="fam-medal">
-        <div class="fam-medal-orbit"></div>
-        <span class="fam-medal-icon">&amp;</span>
-      </div>
-      <p class="fam-role">Padres del Novio</p>
-      <p class="fam-names">Por confirmar</p>
-    </div>
-
-    <div class="fam-node">
-      <div class="fam-medal">
-        <div class="fam-medal-orbit"></div>
-        <span class="fam-medal-icon">&amp;</span>
-      </div>
-      <p class="fam-role">Padres de la Novia</p>
-      <p class="fam-names">Por confirmar</p>
-    </div>
-
-    <div class="fam-sep" aria-hidden="true">
-      <span class="fam-sep-line"></span>
-      <span class="fam-sep-dot">✦  ·  ✦</span>
-      <span class="fam-sep-line"></span>
-    </div>
-
-    <p class="fam-group-title">✦ Nuestros Padrinos ✦</p>
-
-    <div class="fam-node">
-      <div class="fam-medal"><div class="fam-medal-orbit"></div><span class="fam-medal-icon">❋</span></div>
-      <p class="fam-role">Padrinos</p>
-      <p class="fam-names">Por confirmar</p>
-    </div>
-  </div>
-</section>
+<!-- Family section removed -->
 
 
-<!-- ═══════════════ 11. GALERÍA · MAR DE IMÁGENES ═══════════════ -->
-<section id="gallery">
+<!-- ═══════════════ 11. GALERÍA · RUEDA 3D ═══════════════ -->
+<section id="gallery" style="padding:72px 28px 80px;text-align:center;overflow:visible">
   <span class="lbl">Nuestra historia</span>
-  <h2 class="ttl">Galería</h2>
+  <h2 class="ttl">Momentos <span style="font-family:'Great Vibes',cursive;color:var(--olive);font-size:42px">juntos</span></h2>
   <div class="gline"></div>
-  <p class="gal-sub"><em>Momentos que atesoramos</em><br>Navega el flujo y toca para ampliar.</p>
 
-  <div class="gal-sea">
-    <!-- Ondas de mar de fondo -->
-    <svg class="gal-sea-wave gal-sea-wave-1" viewBox="0 0 1760 90" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,45 Q110,18 220,45 T440,45 T660,45 T880,45 T1100,45 T1320,45 T1540,45 T1760,45" fill="none" stroke="rgba(168,180,120,.45)" stroke-width="1.1"/>
-      <path d="M0,55 Q110,28 220,55 T440,55 T660,55 T880,55 T1100,55 T1320,55 T1540,55 T1760,55" fill="none" stroke="rgba(168,180,120,.22)" stroke-width=".9"/>
-    </svg>
-    <svg class="gal-sea-wave gal-sea-wave-2" viewBox="0 0 1760 90" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,45 Q110,68 220,45 T440,45 T660,45 T880,45 T1100,45 T1320,45 T1540,45 T1760,45" fill="none" stroke="rgba(168,180,120,.4)" stroke-width="1"/>
-      <path d="M0,35 Q110,58 220,35 T440,35 T660,35 T880,35 T1100,35 T1320,35 T1540,35 T1760,35" fill="none" stroke="rgba(168,180,120,.18)" stroke-width=".8"/>
-    </svg>
-
-    <!-- Líneas de corriente (trazos finos que se desplazan) -->
-    <div class="gal-current" style="top:12%"><div class="gal-current-line" style="animation-delay:0s;top:0"></div></div>
-    <div class="gal-current" style="top:28%"><div class="gal-current-line slow" style="animation-delay:-1.2s;top:0"></div></div>
-    <div class="gal-current" style="top:48%"><div class="gal-current-line" style="animation-delay:-2.8s;top:0;animation-duration:5.2s"></div></div>
-    <div class="gal-current" style="top:68%"><div class="gal-current-line slow" style="animation-delay:-.6s;top:0"></div></div>
-    <div class="gal-current" style="top:86%"><div class="gal-current-line" style="animation-delay:-3.5s;top:0;animation-duration:4.8s"></div></div>
-
-    <!-- Capa 1 — corriente principal (hacia la izquierda) -->
-    <div class="gal-stream gal-stream-1" aria-label="Galería — capa superior">
-      <div class="gal-train" id="galTrain1">
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop&q=82" alt="Novios bajo arco floral" loading="lazy">
-        </div>
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop&q=82" alt="Pareja al atardecer" loading="lazy">
-        </div>
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=800&fit=crop&q=82" alt="Pareja celebrando" loading="lazy">
-        </div>
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=800&fit=crop&q=82" alt="Decoración floral" loading="lazy">
-        </div>
-      </div>
-    </div>
-
-    <!-- Capa 2 — corriente secundaria (hacia la derecha, más lenta) -->
-    <div class="gal-stream gal-stream-2" aria-label="Galería — capa inferior">
-      <div class="gal-train" id="galTrain2">
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=800&fit=crop&q=82" alt="Novia" loading="lazy">
-        </div>
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=600&h=800&fit=crop&q=82" alt="Detalle boda" loading="lazy">
-        </div>
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&h=800&fit=crop&q=82" alt="Mesa decorada" loading="lazy">
-        </div>
-        <div class="gal-float" tabindex="0" role="button" aria-label="Ampliar foto">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop&q=82" alt="Novios bajo arco floral" loading="lazy">
-        </div>
-      </div>
+  <div class="wheel-scene" id="wheel-scene" style="position:relative;width:100%;height:520px;margin:40px auto 0;perspective:1400px;transform-style:preserve-3d;overflow:visible">
+    <div class="wheel-ring" id="wheel-ring" style="position:absolute;width:100%;height:100%;transform-style:preserve-3d;cursor:grab">
+      <div class="wheel-card"><img src="assets/gallery/foto-1.jpg" alt="Rosa y Jorge" loading="lazy"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-2.jpg" alt="Rosa y Jorge en familia" loading="lazy"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-3.jpg" alt="Rosa y Jorge" loading="lazy"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-4.jpg" alt="Rosa y Jorge" loading="lazy"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-5.jpg" alt="Rosa y Jorge" loading="lazy"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-6.jpg" alt="Rosa y Jorge" loading="lazy"></div>
     </div>
   </div>
-
-  <p class="gal-hint">Toca una foto para ampliar</p>
+  <p class="gal-hint" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:3px;color:var(--olive);margin-top:24px;opacity:.8">Arrastra para girar</p>
 </section>
 
 <!-- ═══ Lightbox fullscreen ═══ -->
@@ -2719,18 +2661,6 @@ function scrollAnims() {
     }
   });
 
-  // Family — medallones aparecen progresivamente al hacer scroll
-  ScrollTrigger.create({
-    trigger: '#family',
-    start: 'top 78%',
-    end:   'bottom 55%',
-    scrub: 0.6,
-    onUpdate(self) {
-      const items = document.querySelectorAll('#famGrove > .fam-node, #famGrove > .fam-group-title, #famGrove > .fam-sep');
-      const n = Math.ceil(self.progress * items.length);
-      items.forEach((el, i) => el.classList.toggle('on', i < n));
-    }
-  });
 
   // Gifts
   gsap.from('.gf-card', {
@@ -2748,8 +2678,8 @@ function scrollAnims() {
     scrollTrigger: { trigger: '#album', start: 'top 80%', once: true }
   });
 
-  // Gallery — la corriente ya se anima en CSS; sólo fade-in suave
-  gsap.from('.gal-sea', {
+  // Gallery — 3D wheel fade-in
+  gsap.from('#wheel-scene', {
     opacity: 0, y: 24,
     duration: .9, ease: 'power3.out',
     scrollTrigger: { trigger: '#gallery', start: 'top 82%', once: true }
@@ -3039,101 +2969,113 @@ function ambientWind() {
 
 /* ── GALLERY · CORRIENTE + LIGHTBOX FULLSCREEN ───────── */
 function initGallery() {
-  const trains   = document.querySelectorAll('.gal-train');
-  const lb       = document.getElementById('galLightbox');
-  const lbImg    = document.getElementById('galLbImg');
-  const lbCount  = document.getElementById('galLbCounter');
-  const btnClose = document.getElementById('galLbClose');
-  const btnPrev  = document.getElementById('galLbPrev');
-  const btnNext  = document.getElementById('galLbNext');
-  if (!trains.length || !lb) return;
+  // 3D Wheel Carousel
+  var ring = document.getElementById('wheel-ring');
+  if (!ring) return;
+  var cards = ring.querySelectorAll('.wheel-card');
+  var n = cards.length;
+  if (!n) return;
+  var radius = 210;
+  var rot = 0, vel = 0, isDrag = false, startX = 0, startRot = 0, lastX = 0, rafId = null;
 
-  // Catálogo único de imágenes para el lightbox
-  const uniq = new Map();
-  trains.forEach(train => {
-    [...train.querySelectorAll('.gal-float img')].forEach(img => {
-      if (!uniq.has(img.src)) uniq.set(img.src, img.alt || '');
-    });
-  });
-  const items = [...uniq.keys()].map(src => ({ src, alt: uniq.get(src) }));
-
-  // Duplicar cada train para loop infinito sin salto
-  trains.forEach(train => {
-    const clones = [...train.children].map(c => c.cloneNode(true));
-    clones.forEach(c => { c.setAttribute('aria-hidden','true'); train.appendChild(c); });
+  cards.forEach(function(card, i) {
+    card.style.transform = 'rotateY(' + (360 / n * i) + 'deg) translateZ(' + radius + 'px)';
   });
 
-  let idx = 0;
+  function setRot() { gsap.set(ring, { rotateY: rot }); }
+  setRot();
 
-  function hiRes(src) {
-    return src.replace(/w=\d+/, 'w=1600').replace(/h=\d+/, 'h=2000').replace(/q=\d+/, 'q=88');
+  function inertia() {
+    if (isDrag) return;
+    rot += vel; vel *= 0.94; setRot();
+    if (Math.abs(vel) > 0.05) rafId = requestAnimationFrame(inertia);
   }
+
+  function pointerDown(x) {
+    isDrag = true; ring.classList.add('dragging');
+    startX = x; lastX = x; startRot = rot; vel = 0;
+    if (rafId) cancelAnimationFrame(rafId);
+  }
+  function pointerMove(x) {
+    if (!isDrag) return;
+    rot = startRot + (x - startX) * 0.45;
+    vel = (x - lastX) * 0.5; lastX = x; setRot();
+  }
+  function pointerUp() {
+    if (!isDrag) return;
+    isDrag = false; ring.classList.remove('dragging');
+    rafId = requestAnimationFrame(inertia);
+  }
+
+  ring.addEventListener('mousedown', function(e) { e.preventDefault(); pointerDown(e.clientX); });
+  window.addEventListener('mousemove', function(e) { pointerMove(e.clientX); });
+  window.addEventListener('mouseup', pointerUp);
+  ring.addEventListener('touchstart', function(e) { pointerDown(e.touches[0].clientX); }, { passive: true });
+  ring.addEventListener('touchmove', function(e) { pointerMove(e.touches[0].clientX); }, { passive: true });
+  ring.addEventListener('touchend', pointerUp);
+
+  var autoSpin = true;
+  (function spin() {
+    if (autoSpin && !isDrag) { rot += 0.12; setRot(); }
+    requestAnimationFrame(spin);
+  })();
+  ring.addEventListener('mousedown', function() { autoSpin = false; });
+  ring.addEventListener('touchstart', function() { autoSpin = false; });
+
+  // Lightbox
+  var lb = document.getElementById('galLightbox');
+  var lbImg = document.getElementById('galLbImg');
+  var lbCount = document.getElementById('galLbCounter');
+  var btnClose = document.getElementById('galLbClose');
+  var btnPrev = document.getElementById('galLbPrev');
+  var btnNext = document.getElementById('galLbNext');
+  if (!lb) return;
+
+  var items = [...cards].map(c => { var img = c.querySelector('img'); return { src: img.src, alt: img.alt }; });
+  var idx = 0;
 
   function update() {
-    lbImg.src = hiRes(items[idx].src);
+    lbImg.src = items[idx].src;
     lbImg.alt = items[idx].alt;
-    lbCount.textContent = `${idx + 1} / ${items.length}`;
+    lbCount.textContent = (idx + 1) + ' / ' + items.length;
   }
-  function open(src) {
-    idx = items.findIndex(it => it.src === src);
-    if (idx < 0) idx = 0;
-    update();
+  function open(i) {
+    idx = i; update();
     lb.removeAttribute('hidden');
-    requestAnimationFrame(() => lb.classList.add('on'));
+    requestAnimationFrame(function() { lb.classList.add('on'); });
     document.body.style.overflow = 'hidden';
     btnClose.focus();
   }
   function close() {
     lb.classList.remove('on');
     document.body.style.overflow = '';
-    setTimeout(() => lb.setAttribute('hidden',''), 360);
+    setTimeout(function() { lb.setAttribute('hidden',''); }, 360);
   }
   function prev() { idx = (idx - 1 + items.length) % items.length; update(); }
   function next() { idx = (idx + 1) % items.length; update(); }
 
-  // Delegación de clicks en TODAS las imágenes (incluyendo clones)
-  document.querySelectorAll('.gal-sea').forEach(sea => {
-    sea.addEventListener('click', e => {
-      const card = e.target.closest('.gal-float');
-      if (!card) return;
-      const img = card.querySelector('img');
-      if (img) open(img.src);
-    });
-    sea.addEventListener('keydown', e => {
-      if (e.key !== 'Enter' && e.key !== ' ') return;
-      const card = e.target.closest('.gal-float');
-      if (!card) return;
-      e.preventDefault();
-      const img = card.querySelector('img');
-      if (img) open(img.src);
-    });
+  cards.forEach(function(card, i) {
+    card.addEventListener('click', function() { open(i); });
   });
 
   btnClose.addEventListener('click', close);
-  btnPrev.addEventListener('click', e => { e.stopPropagation(); prev(); });
-  btnNext.addEventListener('click', e => { e.stopPropagation(); next(); });
-  lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('gal-lb-inner')) close(); });
-
-  document.addEventListener('keydown', e => {
+  btnPrev.addEventListener('click', function(e) { e.stopPropagation(); prev(); });
+  btnNext.addEventListener('click', function(e) { e.stopPropagation(); next(); });
+  lb.addEventListener('click', function(e) { if (e.target === lb || e.target.classList.contains('gal-lb-inner')) close(); });
+  document.addEventListener('keydown', function(e) {
     if (!lb.classList.contains('on')) return;
-    if (e.key === 'Escape')     close();
-    if (e.key === 'ArrowLeft')  prev();
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
   });
 
-  // Swipe en lightbox
-  let tx = 0, ty = 0;
-  lb.addEventListener('touchstart', e => {
-    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
-  }, { passive: true });
-  lb.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - tx;
-    const dy = e.changedTouches[0].clientY - ty;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
-      dx > 0 ? prev() : next();
-    } else if (dy > 80) {
-      close();
-    }
+  var tx = 0, ty = 0;
+  lb.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  lb.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) { dx > 0 ? prev() : next(); }
+    else if (dy > 80) { close(); }
   }, { passive: true });
 }
 
