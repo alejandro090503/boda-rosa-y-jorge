@@ -814,12 +814,49 @@ footer{background:#f0ead9}
 }
 .pal-sw:active{transform:scale(1.18)!important}
 .pal-nm{font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--cream);opacity:.5}
-.dc-note{
-  background:rgba(168,180,120,.04);border-left:2px solid var(--olive);
-  padding:18px 18px;border-radius:0 8px 8px 0;
-  font-size:12px;color:var(--cream);opacity:.68;line-height:1.8;
+/* ── DAMAS · EVITAR (card con círculos de color) ──────── */
+.dc-avoid{
+  max-width:360px;margin:0 auto;text-align:center;
+  background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(212,197,178,.16) 100%);
+  border:1px solid rgba(168,180,120,.28);
+  border-radius:18px;
+  padding:26px 22px 24px;position:relative;overflow:hidden;
+  box-shadow:0 16px 42px -20px rgba(125,138,86,.45);
 }
-.dc-note strong{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--olive);display:block;margin-bottom:6px}
+.dc-avoid::before{
+  content:'';position:absolute;top:0;left:18%;right:18%;height:1px;
+  background:linear-gradient(to right,transparent,var(--olive),transparent);opacity:.6;
+}
+.dc-avoid-ttl{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  color:var(--olive);letter-spacing:1px;margin-bottom:5px;
+}
+.dc-avoid-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:12px;color:var(--cream);opacity:.62;margin-bottom:22px;
+}
+.dc-avoid-swatches{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:14px 18px;
+}
+.dc-av{display:flex;flex-direction:column;align-items:center;gap:9px;width:50px}
+.dc-av-dot{
+  width:36px;height:36px;border-radius:50%;position:relative;
+  box-shadow:0 3px 10px rgba(58,65,42,.18), inset 0 1px 2px rgba(255,255,255,.55);
+}
+.dc-av-dot::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(58,65,42,.12);
+}
+/* Trazo diagonal sutil = "evitar" */
+.dc-av-dot::before{
+  content:'';position:absolute;top:50%;left:-4px;right:-4px;height:1.5px;
+  background:rgba(150,74,64,.55);transform:translateY(-50%) rotate(-45deg);
+  border-radius:2px;z-index:2;
+}
+.dc-av-nm{
+  font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--cream);opacity:.72;
+}
 
 /* ── FAMILY · CONSTELACIÓN DE MEDALLONES ─────────────── */
 #family{background:var(--ink);overflow:hidden}
@@ -1342,15 +1379,74 @@ footer{background:#f0ead9}
   font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
   color:var(--olive);opacity:.7;margin:12px 0 0;text-align:center;
 }
-.gf-bank{padding:24px 22px 26px}
-.gf-bank-info{padding:0;margin-top:16px;max-width:320px;margin-left:auto;margin-right:auto}
-.gf-bk-line{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(168,180,120,.08);font-size:12px}
-.gf-bk-line:last-of-type{border-bottom:none}
-.gf-bk-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);opacity:.5}
-.gf-bk-val{color:var(--cream);font-size:12px;text-align:right}
-.gf-bk-clabe-wrap{flex-direction:column;align-items:center;gap:6px;padding-top:12px}
-.gf-bk-clabe{font-family:'Lato',monospace;color:var(--olive);font-size:15px;letter-spacing:2px;width:100%;text-align:center}
-.gf-copy{margin-top:14px;width:100%;max-width:260px;margin-left:auto;margin-right:auto;font-size:10px;padding:13px 16px}
+/* ── TARJETA BANCARIA PREMIUM ─────────────────────────── */
+.gf-bankcard{
+  max-width:360px;margin:0 auto;text-align:left;
+  background:
+    radial-gradient(130% 90% at 100% 0%, rgba(143,168,120,.4) 0%, transparent 52%),
+    linear-gradient(158deg,#454d33 0%,#373f27 62%,#2f3622 100%);
+  border:1px solid rgba(212,197,178,.28);
+  border-radius:20px;
+  padding:24px 24px 20px;
+  position:relative;overflow:hidden;
+  box-shadow:0 24px 54px -22px rgba(47,54,34,.85), inset 0 1px 0 rgba(255,255,255,.09);
+}
+.gf-bc-shine{
+  position:absolute;top:-60%;left:-30%;width:80%;height:220%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+  transform:rotate(18deg);pointer-events:none;
+}
+.gf-bc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.gf-bc-chip{
+  width:38px;height:28px;border-radius:6px;
+  background:linear-gradient(135deg,#E4D6C2,#C3B291);
+  box-shadow:inset 0 0 0 1px rgba(58,65,42,.25), 0 2px 6px rgba(0,0,0,.25);
+  position:relative;
+}
+.gf-bc-chip::before,.gf-bc-chip::after{content:'';position:absolute;background:rgba(58,65,42,.35)}
+.gf-bc-chip::before{top:9px;left:4px;right:4px;height:1px}
+.gf-bc-chip::after{left:50%;top:4px;bottom:4px;width:1px}
+.gf-bc-badge{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;
+  letter-spacing:3px;color:#3A412A;
+  background:linear-gradient(135deg,#EBDFCB,#D4C5B2);
+  padding:6px 14px;border-radius:8px;line-height:1;
+  box-shadow:0 3px 10px rgba(0,0,0,.28);
+}
+.gf-bc-kicker{
+  font-size:8px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(241,236,221,.55);margin-bottom:20px;
+}
+.gf-bc-field{margin-bottom:20px}
+.gf-bc-k{
+  display:block;font-size:8px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(241,236,221,.5);margin-bottom:6px;
+}
+.gf-bc-holder{
+  font-family:'Cormorant Garamond',serif;font-size:20px;
+  color:#FCF8EC;letter-spacing:.5px;
+}
+.gf-bc-row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  width:100%;text-align:left;cursor:pointer;
+  background:rgba(241,236,221,.05);
+  border:1px solid rgba(212,197,178,.16);
+  border-radius:12px;padding:13px 16px;margin-bottom:12px;
+  transition:background .25s, border-color .25s, transform .2s var(--spring);
+  -webkit-appearance:none;
+}
+.gf-bc-row:hover{background:rgba(241,236,221,.09);border-color:rgba(212,197,178,.32)}
+.gf-bc-row:active{transform:scale(.98)}
+.gf-bc-row-txt{display:flex;flex-direction:column;gap:5px;min-width:0}
+.gf-bc-num{
+  font-family:'Lato',monospace;font-size:15px;letter-spacing:1.5px;
+  color:#EBD9C0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.gf-bc-copy{color:var(--olive-lt);flex-shrink:0;opacity:.85}
+.gf-bc-foot{
+  text-align:center;font-size:9px;letter-spacing:2px;
+  color:rgba(241,236,221,.45);margin-top:14px;
+}
 
 /* ── ALBUM QR ─────────────────────────────────────────── */
 #album{background:var(--ink)}
@@ -1968,24 +2064,36 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="gline"></div>
   <p class="gf-sub">Si deseas obsequiarnos algo especial,<br>compartimos contigo nuestras opciones.</p>
 
-  <div class="gf-card gf-bank">
-    <div class="gf-card-top">
-      <div class="gf-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6M5 10v9h14v-9M8 14v3M12 14v3M16 14v3M3 19h18"/></svg></div>
-      <p class="gf-ttl">Transferencia BCP</p>
+  <div class="gf-bankcard">
+    <div class="gf-bc-shine" aria-hidden="true"></div>
+    <div class="gf-bc-head">
+      <div class="gf-bc-chip" aria-hidden="true"></div>
+      <span class="gf-bc-badge">BCP</span>
     </div>
-    <div class="gf-bank-info">
-      <p class="gf-bk-line"><span class="gf-bk-lbl">Banco</span><span class="gf-bk-val">BCP</span></p>
-      <p class="gf-bk-line"><span class="gf-bk-lbl">Titular</span><span class="gf-bk-val">Rosa Bejarano Chauca</span></p>
-      <p class="gf-bk-line"><span class="gf-bk-lbl">Cuenta</span><span class="gf-bk-val">19117645175007</span></p>
-      <p class="gf-bk-line gf-bk-clabe-wrap">
-        <span class="gf-bk-lbl">CCI</span>
-        <span class="gf-bk-clabe" id="clabeNum">00219111764517500756</span>
-      </p>
-      <button class="btn gf-copy" onclick="copyClabe()" type="button">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copiar CCI
-      </button>
+    <p class="gf-bc-kicker">Transferencia bancaria</p>
+
+    <div class="gf-bc-field">
+      <span class="gf-bc-k">Titular de la cuenta</span>
+      <span class="gf-bc-holder">Rosa Bejarano Chauca</span>
     </div>
+
+    <button class="gf-bc-row" onclick="copyVal('cuentaNum','Cuenta')" type="button" aria-label="Copiar número de cuenta">
+      <span class="gf-bc-row-txt">
+        <span class="gf-bc-k">Número de cuenta</span>
+        <span class="gf-bc-num" id="cuentaNum">191 1764 5175 007</span>
+      </span>
+      <svg class="gf-bc-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    </button>
+
+    <button class="gf-bc-row" onclick="copyVal('clabeNum','CCI')" type="button" aria-label="Copiar código CCI">
+      <span class="gf-bc-row-txt">
+        <span class="gf-bc-k">Código interbancario · CCI</span>
+        <span class="gf-bc-num" id="clabeNum">0021 9111 7645 1750 0756</span>
+      </span>
+      <svg class="gf-bc-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    </button>
+
+    <p class="gf-bc-foot">✦ &nbsp; Toca una cuenta para copiarla &nbsp; ✦</p>
   </div>
 </section>
 
@@ -2037,9 +2145,31 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </div>
   </div>
 
-  <div class="dc-note" id="dcNote">
-    <strong>Damas — por favor evitar:</strong>
-    Colores pasteles, en especial blanco, beige, nude y gris (reservados para la novia).
+  <div class="dc-avoid" id="dcNote">
+    <p class="dc-avoid-ttl">Damas · por favor evitar</p>
+    <p class="dc-avoid-sub">Estos tonos están reservados para la novia</p>
+    <div class="dc-avoid-swatches">
+      <div class="dc-av">
+        <span class="dc-av-dot" style="background:linear-gradient(135deg,#F3D9DD 0%,#D9E3F0 100%)"></span>
+        <span class="dc-av-nm">Pasteles</span>
+      </div>
+      <div class="dc-av">
+        <span class="dc-av-dot" style="background:#FFFFFF"></span>
+        <span class="dc-av-nm">Blanco</span>
+      </div>
+      <div class="dc-av">
+        <span class="dc-av-dot" style="background:#D4C5B2"></span>
+        <span class="dc-av-nm">Beige</span>
+      </div>
+      <div class="dc-av">
+        <span class="dc-av-dot" style="background:#E3C9B8"></span>
+        <span class="dc-av-nm">Nude</span>
+      </div>
+      <div class="dc-av">
+        <span class="dc-av-dot" style="background:#B7B7B4"></span>
+        <span class="dc-av-nm">Gris</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2639,8 +2769,12 @@ function scrollAnims() {
 
 
   // Gifts
-  gsap.from('.gf-card', {
-    opacity: 0, y: 22, duration: .6, stagger: .11, ease,
+  gsap.from('.gf-bankcard', {
+    opacity: 0, y: 26, scale: .97, duration: .7, ease,
+    scrollTrigger: { trigger: '#gifts', start: 'top 80%', once: true }
+  });
+  gsap.from('.gf-bankcard .gf-bc-field, .gf-bankcard .gf-bc-row', {
+    opacity: 0, y: 14, duration: .55, stagger: .1, ease, delay: .2,
     scrollTrigger: { trigger: '#gifts', start: 'top 80%', once: true }
   });
 
@@ -2884,14 +3018,17 @@ function toggleMusic() {
   }
 })();
 
-/* ── COPY CLABE ──────────────────────────────────────── */
-function copyClabe() {
-  const raw = document.getElementById('clabeNum').textContent.replace(/\s+/g,'');
+/* ── COPY DATOS BANCARIOS ────────────────────────────── */
+function copyVal(id, label) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const raw = el.textContent.replace(/\s+/g,'');
   navigator.clipboard.writeText(raw).then(
-    () => toast('CCI copiado'),
+    () => toast((label || 'Dato') + ' copiado'),
     () => toast('No se pudo copiar')
   );
 }
+function copyClabe() { copyVal('clabeNum', 'CCI'); }
 
 /* breathText removido — los nombres ya no tienen efecto de respiración */
 
