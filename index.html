@@ -47,11 +47,11 @@
 
 /* ── RESET ────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;width:100%}
 body{
   background:var(--ink);color:var(--cream);
   font-family:'Lato',sans-serif;font-weight:300;
-  overflow-x:hidden;max-width:430px;margin:0 auto;
+  overflow-x:hidden;max-width:430px;margin:0 auto;width:100%;
   -webkit-tap-highlight-color:transparent;
 }
 section{padding:64px 22px}
@@ -232,6 +232,43 @@ section{padding:64px 22px}
 .dc-note{background:rgba(212,197,178,.18);border-left:3px solid var(--olive-lt)}
 #gallery{background:linear-gradient(180deg,var(--ink) 0%,#f3efe6 50%,var(--ink) 100%)}
 footer{background:#f0ead9}
+
+/* ── INVITACIÓN FAMILIAR ─────────────────────────────── */
+#invite{
+  background:linear-gradient(180deg,#faf7ec 0%,rgba(212,197,178,.22) 100%);
+  padding:70px 26px;text-align:center;
+  border-bottom:1px solid rgba(168,180,120,.12);
+}
+.inv-wrap{max-width:360px;margin:0 auto}
+.inv-orn{
+  display:block;font-size:12px;letter-spacing:8px;
+  color:var(--olive);opacity:.7;margin-bottom:22px;
+}
+.inv-lead{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-style:italic;font-weight:400;
+  color:var(--cream);letter-spacing:.5px;line-height:1.5;
+}
+.inv-children{
+  font-family:'Great Vibes',cursive;
+  font-size:36px;color:var(--olive);
+  line-height:1.3;margin-top:10px;letter-spacing:1px;
+}
+.inv-body{
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;color:var(--cream);opacity:.82;
+  line-height:1.9;letter-spacing:.3px;
+}
+.inv-date{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-weight:600;
+  color:var(--olive);letter-spacing:2px;
+  text-transform:uppercase;margin-top:16px;
+}
+.inv-close{
+  font-size:12.5px;color:var(--cream);opacity:.6;
+  line-height:1.8;margin-top:22px;font-style:italic;
+}
 
 /* ── HERO ─────────────────────────────────────────────── */
 #hero{
@@ -556,7 +593,35 @@ footer{background:#f0ead9}
   letter-spacing:.3px;
 }
 
-/* ── MEDALLÓN CIRCULAR ────────────────────────────────── */
+/* ── HORARIOS ELEGANTES (sin círculos) ────────────────── */
+.loc-times{
+  display:flex;align-items:stretch;justify-content:center;
+  gap:0;margin:26px auto 30px;max-width:320px;
+}
+.loc-time-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  gap:10px;padding:6px 10px;
+}
+.loc-time-tag{
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--olive);opacity:.85;
+}
+.loc-time-big{
+  font-family:'Cormorant Garamond',serif;
+  font-size:44px;font-weight:300;line-height:1;
+  color:var(--cream);letter-spacing:-1px;
+  display:flex;align-items:flex-start;gap:3px;
+}
+.loc-time-big small{
+  font-size:12px;letter-spacing:2px;font-weight:400;
+  color:var(--olive);margin-top:6px;
+}
+.loc-time-div{
+  width:1px;align-self:center;height:56px;
+  background:linear-gradient(to bottom,transparent,var(--olive-lt),transparent);
+}
+
+/* ── MEDALLÓN CIRCULAR (legacy, sin uso) ──────────────── */
 .loc-medallion{
   position:relative;
   width:168px;height:168px;
@@ -667,66 +732,54 @@ footer{background:#f0ead9}
 }
 .cal-sub{font-size:13px;color:var(--cream);opacity:.6;line-height:1.9;margin:14px 0 28px}
 
-/* ── ITINERARY — CAMINO EN S CON MOVIMIENTO ───────────── */
+/* ── ITINERARIO — LÍNEA DE TIEMPO ELEGANTE (sin círculos) ── */
 #itinerary{background:var(--ink);overflow:hidden}
 .timeline{
   margin-top:44px;position:relative;
-  padding:18px 0 6px;
-  min-height:400px;
+  padding:8px 0 6px 8px;
+  max-width:360px;margin-left:auto;margin-right:auto;
 }
-/* SVG del camino en S */
-.tl-svg{
-  position:absolute;inset:0;width:100%;height:100%;
-  pointer-events:none;z-index:0;
-  overflow:visible;
+/* Línea vertical central izquierda */
+.tl-line{
+  position:absolute;top:14px;bottom:14px;left:20px;
+  width:1px;
+  background:linear-gradient(to bottom,transparent,var(--olive-lt) 12%,var(--olive-lt) 88%,transparent);
+  z-index:0;
 }
-.tl-svg-bg{
-  stroke:rgba(168,180,120,.18);
-  stroke-width:1;fill:none;
-  stroke-dasharray:2 5;
-}
-.tl-svg-path{
-  stroke:var(--olive);
-  stroke-width:1.6;
-  stroke-linecap:round;
-  fill:none;
-  filter:drop-shadow(0 0 5px rgba(168,180,120,.35));
-}
-
-/* Fila con zig-zag: lado izq y der — texto nunca cruza la línea central */
 .tl-row{
-  position:relative;
-  z-index:1;                /* crea stacking context para que el halo tape la línea */
-  min-height:158px;
-  display:flex;align-items:center;
-  margin-bottom:14px;
+  position:relative;z-index:1;
+  padding-left:52px;
+  margin-bottom:20px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .6s var(--smooth), transform .6s var(--smooth);
+}
+.tl-row.on{opacity:1;transform:translateY(0)}
+.tl-row:last-child{margin-bottom:0}
+
+/* Marcador de diamante (rombo) en lugar de círculo */
+.tl-mark{
+  position:absolute;left:14px;top:24px;
+  width:13px;height:13px;
+  background:var(--ink);
+  border:1.5px solid var(--olive);
+  transform:rotate(45deg) scale(0);
+  transition:transform .5s var(--spring), background .5s;
+  z-index:2;
+}
+.tl-row.on .tl-mark{
+  transform:rotate(45deg) scale(1);
+  background:var(--olive);
+  box-shadow:0 0 0 4px var(--ink), 0 0 14px rgba(168,180,120,.4);
 }
 
-/* Texto solo en el lado exterior del dot — jamás cruza el centro */
-.tl-row[data-side="left"]{
-  padding-left:58px;padding-right:44%;
-  justify-content:flex-start;text-align:left;
-}
-.tl-row[data-side="right"]{
-  padding-right:58px;padding-left:44%;
-  justify-content:flex-end;text-align:right;
-}
-.tl-row-inner{
-  max-width:168px;
-  display:flex;flex-direction:column;gap:2px;
-  position:relative;
-  padding:6px 4px;
-}
-/* Halo blanco detrás del texto — oculta la línea si cruza por detrás */
-.tl-row-inner::before{
-  content:'';position:absolute;inset:-6px -14px;
-  background:radial-gradient(ellipse at center,
-    rgba(255,255,255,.92) 0%,
-    rgba(255,255,255,.55) 55%,
-    rgba(255,255,255,0) 100%);
-  z-index:-1;
-  border-radius:16px;
-  pointer-events:none;
+/* Tarjeta cálida del evento */
+.tl-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.9) 0%,rgba(212,197,178,.15) 100%);
+  border:1px solid rgba(168,180,120,.22);
+  border-left:3px solid var(--olive-lt);
+  border-radius:0 14px 14px 0;
+  padding:16px 20px;
+  box-shadow:0 8px 24px -14px rgba(125,138,86,.3);
 }
 .tl-t{
   font-family:'Cormorant Garamond',serif;
@@ -736,85 +789,16 @@ footer{background:#f0ead9}
 }
 .tl-ev{
   font-family:'Cormorant Garamond',serif;
-  font-size:19px;color:var(--cream);
-  font-weight:400;line-height:1.22;
-  margin-top:4px;
+  font-size:21px;color:var(--cream);
+  font-weight:500;line-height:1.2;
+  margin-top:6px;
 }
 .tl-de{
-  font-size:11px;color:var(--cream);opacity:.58;
-  line-height:1.55;margin-top:3px;
-}
-
-/* Aparición en cascada al activarse la fila */
-.tl-row-inner > *{
-  opacity:0;
-  transform:translateY(8px);
-  transition:opacity .55s var(--smooth), transform .55s var(--smooth);
-}
-.tl-row[data-side="left"] .tl-row-inner > *{transform:translateY(8px) translateX(-6px)}
-.tl-row[data-side="right"] .tl-row-inner > *{transform:translateY(8px) translateX(6px)}
-.tl-row.on .tl-row-inner > *{opacity:1;transform:translateY(0) translateX(0)}
-.tl-row.on .tl-t {transition-delay:.08s}
-.tl-row.on .tl-ev{transition-delay:.20s}
-.tl-row.on .tl-de{transition-delay:.32s}
-
-/* Punto del dot */
-.tl-dot{
-  position:absolute;top:50%;
-  width:14px;height:14px;margin-top:-7px;
-  border-radius:50%;
-  background:var(--ink);
-  border:1.5px solid var(--olive);
-  transform:scale(0);
-  transition:transform .55s var(--spring), box-shadow .55s, background .55s;
-  z-index:2;
-}
-.tl-row[data-side="left"]  .tl-dot{left:22px}
-.tl-row[data-side="right"] .tl-dot{right:22px}
-.tl-row.on .tl-dot{
-  transform:scale(1);
-  background:var(--olive);
-  box-shadow:
-    0 0 0 3px rgba(255,255,255,.9),
-    0 0 12px rgba(168,180,120,.55),
-    0 0 24px rgba(168,180,120,.3);
-}
-
-/* Orbital decorativo alrededor del dot */
-.tl-orn{
-  position:absolute;top:50%;
-  width:40px;height:40px;margin-top:-20px;
-  border-radius:50%;
-  border:1px dashed rgba(168,180,120,.25);
-  opacity:0;
-  animation:tlOrnRotate 22s linear infinite;
-  transition:opacity .9s ease;
-  pointer-events:none;z-index:1;
-}
-.tl-row[data-side="left"]  .tl-orn{left:9px}
-.tl-row[data-side="right"] .tl-orn{right:9px}
-.tl-row.on .tl-orn{opacity:1}
-@keyframes tlOrnRotate{to{transform:rotate(360deg)}}
-
-/* Anillo de pulso al activarse */
-.tl-pulse{
-  position:absolute;top:50%;
-  width:18px;height:18px;margin-top:-9px;
-  border-radius:50%;
-  border:1.5px solid var(--olive);
-  opacity:0;
-  pointer-events:none;z-index:1;
-}
-.tl-row[data-side="left"]  .tl-pulse{left:20px}
-.tl-row[data-side="right"] .tl-pulse{right:20px}
-.tl-row.on .tl-pulse{animation:tlPulse 2.8s ease-out 1}
-@keyframes tlPulse{
-  0%{transform:scale(1);opacity:.85}
-  100%{transform:scale(3);opacity:0}
+  font-size:11.5px;color:var(--cream);opacity:.6;
+  line-height:1.55;margin-top:4px;
 }
 
 @media(prefers-reduced-motion:reduce){
-  .tl-orn,.tl-pulse{animation:none!important}
   .tl-row{transition:none!important}
 }
 
@@ -1229,10 +1213,44 @@ footer{background:#f0ead9}
   .gal-sea-wave-1,.gal-sea-wave-2{animation:none!important}
 }
 
-/* ── RSVP ─────────────────────────────────────────────── */
-#rsvp{background:var(--ink)}
-.rsvp-sub{text-align:center;font-size:13px;color:var(--cream);opacity:.6;line-height:1.85;margin:14px 0 32px}
-.rsvp-dl{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--olive);font-style:italic}
+/* ── RSVP (diseño boda-jennifer, paleta olivo) ────────── */
+#rsvp{background:var(--ink);padding:64px 20px}
+.rsvp-card{max-width:580px;margin:0 auto;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(168,180,120,.4);padding:clamp(40px,7vw,60px) clamp(24px,6vw,48px);position:relative;box-shadow:0 24px 64px rgba(58,65,42,.10),0 4px 20px rgba(168,180,120,.14);}
+.rsvp-card::before{content:"";position:absolute;inset:10px;border:1px solid rgba(168,180,120,.22);pointer-events:none;}
+.rsvp-corner{position:absolute;width:52px;height:52px;pointer-events:none;}
+.rsvp-corner--tl{top:0;left:0;}
+.rsvp-corner--tr{top:0;right:0;transform:scaleX(-1);}
+.rsvp-corner--bl{bottom:0;left:0;transform:scaleY(-1);}
+.rsvp-corner--br{bottom:0;right:0;transform:scale(-1,-1);}
+.rsvp-inner{text-align:center;}
+.rsvp-ornament{display:block;margin:0 auto 24px;width:min(260px,72vw);height:auto}
+.rsvp-inner .eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--olive);margin-bottom:16px;}
+.rsvp-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(28px,6vw,40px);color:var(--cream);margin-bottom:16px;line-height:1.18;font-weight:500;}
+.rsvp-title em{color:var(--olive);font-style:italic;}
+.rsvp-text{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.5vw,17px);color:var(--cream);opacity:.78;line-height:1.8;margin:0 auto 30px;font-weight:500;max-width:420px;}
+.rsvp-text strong{color:var(--olive);font-weight:600}
+.rsvp-divider{display:flex;align-items:center;gap:14px;margin:0 auto 28px;max-width:300px;}
+.rsvp-divider::before,.rsvp-divider::after{content:"";flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(168,180,120,.5),transparent);}
+.rsvp-divider-heart{color:var(--olive);flex-shrink:0;opacity:.8;}
+.rsvp-pases-display{max-width:420px;margin:0 auto 24px;padding:18px 28px;background:rgba(212,197,178,.18);border:1px solid rgba(168,180,120,.28);border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.rsvp-pases-label{font-family:'Lato',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cream);opacity:.75;}
+.rsvp-pases-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(34px,5vw,48px);color:var(--olive);line-height:1;}
+.rsvp-toggle{display:flex;gap:10px;max-width:420px;margin:0 auto 18px;}
+.rsvp-toggle-btn{flex:1;padding:14px 8px;border:1.5px solid rgba(168,180,120,.28);background:rgba(255,255,255,.6);cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--cream);border-radius:8px;transition:all .25s;}
+.rsvp-toggle-btn:disabled{opacity:.45;cursor:not-allowed;}
+.rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(117,140,98,.14);border-color:var(--olive);color:#3A412A;}
+.rsvp-toggle-btn.rsvp-toggle-selected-no{background:rgba(212,197,178,.25);border-color:var(--olive);color:var(--olive);}
+.rsvp-fields{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto 20px;}
+.rsvp-input{width:100%;padding:15px 20px;border:1.5px solid rgba(168,180,120,.28);border-radius:12px;background:rgba(255,255,255,.8);font-family:'Lato',sans-serif;font-size:15px;color:var(--cream);letter-spacing:.03em;outline:none;transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;min-height:52px;}
+.rsvp-input:focus{border-color:var(--olive);box-shadow:0 0 0 3px rgba(168,180,120,.15);background:rgba(255,255,255,.96);}
+.rsvp-input::placeholder{color:var(--cream);opacity:.45;}
+.rsvp-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:420px;margin:0 auto;padding:18px 36px;border-radius:50px;border:1.5px solid rgba(168,180,120,.5);background:linear-gradient(135deg,var(--olive) 0%,#8aa06f 100%);font-family:'Lato',sans-serif;font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#fff;cursor:pointer;min-height:56px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s;box-shadow:0 6px 20px rgba(117,140,98,.35),0 2px 8px rgba(168,180,120,.18);}
+.rsvp-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(117,140,98,.4);}
+.rsvp-btn:disabled{opacity:.6;cursor:not-allowed;}
+.rsvp-btn > *{position:relative;z-index:1;}
+#rsvp-pases-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--cream);opacity:.7;text-align:center;margin:0 auto 20px;max-width:420px;display:none;}
+#rsvp-feedback{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;text-align:center;margin:16px auto 0;max-width:420px;display:none;}
+.rsvp-deadline{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-family:'Lato',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--olive);font-weight:600;}
 
 /* Mensaje "Solo adultos" al pie del RSVP */
 .rsvp-adults{
@@ -1597,140 +1615,54 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   from{transform:translateX(0)}to{transform:translateX(-50%)}
 }
 
-/* Grid 2x2 — tamaños sucesivos: Días > Horas > Minutos > Segundos */
-.cd-ring-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:28px 18px;
-  margin-top:52px;position:relative;z-index:1;
-  padding:0 4px;
-  align-items:center;
-  justify-items:center;
+/* ── COUNTDOWN — TARJETAS EDITORIALES SIN CÍRCULOS ───── */
+.cd-grid{
+  display:flex;align-items:flex-start;justify-content:center;
+  gap:6px;margin-top:48px;position:relative;z-index:1;
+  flex-wrap:nowrap;
 }
-
-.cd-ring-item{
-  position:relative;aspect-ratio:1;
-  display:flex;align-items:center;justify-content:center;
-  width:100%;
-  transition:transform .45s cubic-bezier(.34,1.56,.64,1);
+.cd-unit{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;
+  flex:1 1 0;min-width:0;max-width:88px;
+  padding:22px 6px 16px;
+  background:linear-gradient(180deg,rgba(255,255,255,.72) 0%,rgba(212,197,178,.16) 100%);
+  border:1px solid rgba(168,180,120,.28);
+  border-radius:14px;
+  box-shadow:0 10px 30px -14px rgba(125,138,86,.28), inset 0 1px 0 rgba(255,255,255,.6);
+  overflow:hidden;
 }
-.cd-ring-item:hover{transform:scale(1.04)}
-.cd-ring-item:active{transform:scale(.96)}
-
-/* Escala sucesiva — más pequeño a medida que la unidad es menor */
-.cd-ring-grid > :nth-child(1){width:100%}   /* DÍAS — el más grande */
-.cd-ring-grid > :nth-child(2){width:82%}    /* HORAS */
-.cd-ring-grid > :nth-child(3){width:68%}    /* MINUTOS */
-.cd-ring-grid > :nth-child(4){width:56%}    /* SEGUNDOS — el más pequeño */
-
-/* Anillo exterior punteado adicional — gira lento */
-.cd-ring-item::after{
-  content:'';position:absolute;inset:-14px;
-  border:1px dashed rgba(168,180,120,.22);
-  border-radius:50%;pointer-events:none;
-  animation:cdOuterRotate 55s linear infinite;
-}
-.cd-ring-item:nth-child(2)::after{animation-duration:40s;animation-direction:reverse}
-.cd-ring-item:nth-child(3)::after{animation-duration:48s}
-.cd-ring-item:nth-child(4)::after{animation-duration:32s;animation-direction:reverse}
-@keyframes cdOuterRotate{to{transform:rotate(360deg)}}
-
-/* Glow central — más intenso y amplio */
-.cd-ring-item::before{
-  content:'';position:absolute;inset:16%;
-  background:radial-gradient(circle,rgba(168,180,120,.22) 0%,rgba(168,180,120,.06) 50%,transparent 78%);
-  border-radius:50%;pointer-events:none;
-  animation:cdGlow 5s ease-in-out infinite;
-}
-@keyframes cdGlow{
-  0%,100%{opacity:.55;transform:scale(1)}
-  50%   {opacity:1;transform:scale(1.22)}
-}
-
-/* SVG progreso */
-.cd-ring-svg{
-  position:absolute;inset:0;width:100%;height:100%;
-  transform:rotate(-90deg);overflow:visible;
-}
-.cd-ring-track{fill:none;stroke:rgba(125,138,86,.25);stroke-width:1.2}
-.cd-ring-prog{
-  fill:none;stroke:var(--olive);stroke-width:3;stroke-linecap:round;
-  stroke-dasharray:326.73;stroke-dashoffset:326.73;
-  transition:stroke-dashoffset .9s cubic-bezier(.34,1.2,.64,1);
-  filter:drop-shadow(0 0 10px rgba(168,180,120,.55));
-}
-
-/* Rotor dashed interior */
-.cd-rotor{
-  position:absolute;inset:8px;
-  border:1px dashed rgba(125,138,86,.38);
-  border-radius:50%;
-  animation:rotorSpin 42s linear infinite;
-  pointer-events:none;
-}
-.cd-rotor-mid{animation-duration:30s}
-.cd-rotor-rev{animation-duration:36s;animation-direction:reverse}
-.cd-rotor-fast{animation-duration:14s}
-@keyframes rotorSpin{
-  from{transform:rotate(0deg)}to{transform:rotate(360deg)}
-}
-
-/* Punto luminoso orbital — más grande y luminoso */
-.cd-dot{
-  position:absolute;top:-4px;left:50%;
-  width:9px;height:9px;
-  background:var(--olive);border-radius:50%;
-  transform:translateX(-50%);
-  box-shadow:
-    0 0 0 2px rgba(255,255,255,.9),
-    0 0 12px rgba(168,180,120,.6),
-    0 0 24px rgba(168,180,120,.35);
-}
-
-/* Ripple tick */
-.cd-ripple{
-  position:absolute;inset:10%;
-  border:1px solid var(--olive);border-radius:50%;
-  opacity:0;pointer-events:none;
-}
-.cd-ring-item.tick .cd-ripple{animation:cdRipple 1.4s ease-out}
-@keyframes cdRipple{
-  0%{transform:scale(.4);opacity:.8}
-  100%{transform:scale(2.5);opacity:0}
-}
-
-/* Centro — números muy grandes y legibles */
-.cd-ring-center{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
+.cd-unit::before{
+  content:'';position:absolute;top:0;left:22%;right:22%;height:1px;
+  background:linear-gradient(to right,transparent,var(--olive),transparent);
+  opacity:.55;
 }
 #countdown .cd-num{
   font-family:'Cormorant Garamond',serif;
   font-weight:400;color:var(--cream);
-  line-height:1;font-variant-numeric:tabular-nums;display:block;
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.7),
-    0 3px 16px rgba(168,180,120,.3);
+  font-size:46px;line-height:1;letter-spacing:-1px;
+  font-variant-numeric:tabular-nums;display:block;
+  text-shadow:0 2px 14px rgba(168,180,120,.25);
 }
-/* Tamaños sucesivos del número */
-.cd-ring-grid > :nth-child(1) .cd-num{font-size:86px;letter-spacing:-2px}
-.cd-ring-grid > :nth-child(2) .cd-num{font-size:68px;letter-spacing:-1.6px}
-.cd-ring-grid > :nth-child(3) .cd-num{font-size:54px;letter-spacing:-1.2px}
-.cd-ring-grid > :nth-child(4) .cd-num{font-size:44px;letter-spacing:-1px}
-
-.cd-ring-lbl{
-  letter-spacing:4px;text-transform:uppercase;
-  color:var(--olive);opacity:.85;font-weight:400;
+.cd-lbl{
+  font-size:8px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--olive);opacity:.85;font-weight:400;margin-top:12px;
 }
-/* Tamaños sucesivos de la etiqueta */
-.cd-ring-grid > :nth-child(1) .cd-ring-lbl{font-size:11px;margin-top:16px}
-.cd-ring-grid > :nth-child(2) .cd-ring-lbl{font-size:10px;margin-top:13px;letter-spacing:3.5px}
-.cd-ring-grid > :nth-child(3) .cd-ring-lbl{font-size:9px;margin-top:10px;letter-spacing:3px}
-.cd-ring-grid > :nth-child(4) .cd-ring-lbl{font-size:8px;margin-top:8px;letter-spacing:2.5px}
+.cd-sep{
+  align-self:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;color:var(--olive);opacity:.4;
+  line-height:1;padding:0 1px;margin-top:14px;
+  animation:cdSepBlink 2s ease-in-out infinite;
+}
+@keyframes cdSepBlink{0%,100%{opacity:.15}50%{opacity:.5}}
 
+@media(max-width:360px){
+  .cd-num{font-size:38px}
+  .cd-sep{font-size:26px}
+}
 @media(prefers-reduced-motion:reduce){
-  .cd-wave-top svg,.cd-wave-bot svg,.cd-rotor,
-  .cd-ring-item::before,.cd-ring-item::after{animation:none!important}
-  .cd-ring-prog{transition:none!important}
+  .cd-wave-top svg,.cd-wave-bot svg,.cd-sep{animation:none!important}
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1781,7 +1713,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 <section id="hero">
   <!-- Background photo (parallax target) -->
   <div class="h-bg" id="heroBg">
-    <img src="assets/gallery/foto-3.jpg"
+    <img src="assets/gallery/foto-4.jpg"
          alt="Rosa y Jorge" loading="eager" id="heroPic">
   </div>
   <div class="h-ov"></div>
@@ -1837,12 +1769,6 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
     <div class="gline" style="margin-top:32px" id="hLine"></div>
 
-    <p class="h-children" id="hChildren" style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cream);opacity:.85;line-height:1.8;margin-top:28px;text-align:center;letter-spacing:.5px">
-      En compañía de nuestros hijos<br>
-      <span style="font-family:'Great Vibes',cursive;font-size:26px;color:var(--olive);letter-spacing:1px">Misael, Stephano &amp; Thiago</span><br>
-      queremos invitarlos a nuestro matrimonio
-    </p>
-
     <div class="h-date-wrap" id="hDate">
       <p class="h-date">28 · Noviembre · 2026</p>
       <p class="h-city">Lima · Perú</p>
@@ -1852,6 +1778,23 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="h-scroll" id="hScroll">
     <div class="h-scroll-line"></div>
     <span>Desliza</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════ INVITACIÓN FAMILIAR ═══════════════ -->
+<section id="invite">
+  <div class="inv-wrap">
+    <span class="inv-orn" aria-hidden="true">✦ · ✦</span>
+    <p class="inv-lead">En compañía de nuestra familia</p>
+    <p class="inv-children">Misael · Stephano · Thiago</p>
+    <div class="gline" style="margin:24px auto"></div>
+    <p class="inv-body">
+      Con inmensa alegría queremos invitarte a celebrar<br>
+      el día en que uniremos nuestras vidas
+    </p>
+    <p class="inv-date">el 28 de Noviembre de 2026</p>
+    <p class="inv-close">Tu presencia hará de este día un momento inolvidable.</p>
   </div>
 </section>
 
@@ -1873,33 +1816,16 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     <p class="loc-type">✦  Ceremonia &amp; Recepción</p>
     <h3 class="loc-name">Fundo Pozo Santo</h3>
 
-    <div style="display:flex;justify-content:center;gap:32px;margin:18px 0 8px">
-      <div class="loc-medallion">
-        <svg class="loc-med-svg" viewBox="0 0 120 120">
-          <circle class="loc-med-track" cx="60" cy="60" r="55"/>
-          <circle class="loc-med-arc"   cx="60" cy="60" r="55"/>
-        </svg>
-        <div class="loc-rotor"><span class="loc-dot"></span></div>
-        <div class="loc-med-ctr">
-          <span class="loc-med-time">5:30</span>
-          <span class="loc-med-ampm">PM</span>
-        </div>
+    <div class="loc-times">
+      <div class="loc-time-item">
+        <span class="loc-time-tag">Ceremonia</span>
+        <span class="loc-time-big">5:30<small>PM</small></span>
       </div>
-      <div class="loc-medallion">
-        <svg class="loc-med-svg" viewBox="0 0 120 120">
-          <circle class="loc-med-track" cx="60" cy="60" r="55"/>
-          <circle class="loc-med-arc"   cx="60" cy="60" r="55"/>
-        </svg>
-        <div class="loc-rotor loc-rotor-rev"><span class="loc-dot"></span></div>
-        <div class="loc-med-ctr">
-          <span class="loc-med-time">6:30</span>
-          <span class="loc-med-ampm">PM</span>
-        </div>
+      <span class="loc-time-div" aria-hidden="true"></span>
+      <div class="loc-time-item">
+        <span class="loc-time-tag">Recepción</span>
+        <span class="loc-time-big">6:30<small>PM</small></span>
       </div>
-    </div>
-    <div style="display:flex;justify-content:center;gap:32px;margin-bottom:16px">
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--olive);opacity:.7">Ceremonia</span>
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--olive);opacity:.7">Recepción</span>
     </div>
 
     <p class="loc-addr">Lima · Perú</p>
@@ -1933,57 +1859,25 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <h2 class="ttl">Cuenta Regresiva</h2>
   <div class="gline"></div>
 
-  <div class="cd-ring-grid">
-    <div class="cd-ring-item" id="cd-item-d">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-d"/>
-      </svg>
-      <div class="cd-rotor"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-d">--</span>
-        <span class="cd-ring-lbl">Días</span>
-      </div>
+  <div class="cd-grid">
+    <div class="cd-unit" id="cd-item-d">
+      <span class="cd-num" id="cd-d">--</span>
+      <span class="cd-lbl">Días</span>
     </div>
-
-    <div class="cd-ring-item" id="cd-item-h">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-h"/>
-      </svg>
-      <div class="cd-rotor cd-rotor-mid"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-h">--</span>
-        <span class="cd-ring-lbl">Horas</span>
-      </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit" id="cd-item-h">
+      <span class="cd-num" id="cd-h">--</span>
+      <span class="cd-lbl">Horas</span>
     </div>
-
-    <div class="cd-ring-item" id="cd-item-m">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-m"/>
-      </svg>
-      <div class="cd-rotor cd-rotor-rev"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-m">--</span>
-        <span class="cd-ring-lbl">Minutos</span>
-      </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit" id="cd-item-m">
+      <span class="cd-num" id="cd-m">--</span>
+      <span class="cd-lbl">Minutos</span>
     </div>
-
-    <div class="cd-ring-item" id="cd-item-s">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-s"/>
-      </svg>
-      <div class="cd-rotor cd-rotor-fast"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-s">--</span>
-        <span class="cd-ring-lbl">Segundos</span>
-      </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit" id="cd-item-s">
+      <span class="cd-num" id="cd-s">--</span>
+      <span class="cd-lbl">Segundos</span>
     </div>
   </div>
 
@@ -2021,38 +1915,63 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <h2 class="ttl">Itinerario</h2>
   <div class="gline"></div>
   <div class="timeline" id="tlWrap">
-    <svg class="tl-svg" id="tlSvg" preserveAspectRatio="none" aria-hidden="true">
-      <path class="tl-svg-bg"   id="tlPathBg"/>
-      <path class="tl-svg-path" id="tlPath"/>
-    </svg>
+    <span class="tl-line" aria-hidden="true"></span>
 
-    <div class="tl-row" data-side="left">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">5:30 PM</p><p class="tl-ev">Ceremonia Religiosa</p><p class="tl-de">Por confirmar</p></div>
+    <div class="tl-row">
+      <span class="tl-mark" aria-hidden="true"></span>
+      <div class="tl-card">
+        <p class="tl-t">5:30 PM</p>
+        <p class="tl-ev">Ceremonia Religiosa</p>
+        <p class="tl-de">Por confirmar</p>
+      </div>
     </div>
-    <div class="tl-row" data-side="right">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">6:30 PM</p><p class="tl-ev">Recepción</p><p class="tl-de">Por confirmar</p></div>
+    <div class="tl-row">
+      <span class="tl-mark" aria-hidden="true"></span>
+      <div class="tl-card">
+        <p class="tl-t">6:30 PM</p>
+        <p class="tl-ev">Recepción</p>
+        <p class="tl-de">Por confirmar</p>
+      </div>
     </div>
-    <div class="tl-row" data-side="left">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Cena</p><p class="tl-de">Menú de gala · Servicio en mesa</p></div>
+    <div class="tl-row">
+      <span class="tl-mark" aria-hidden="true"></span>
+      <div class="tl-card">
+        <p class="tl-t">Por confirmar</p>
+        <p class="tl-ev">Cena</p>
+        <p class="tl-de">Menú de gala · Servicio en mesa</p>
+      </div>
     </div>
-    <div class="tl-row" data-side="right">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Baile de Novios</p><p class="tl-de">El primer vals de Rosa &amp; Jorge</p></div>
+    <div class="tl-row">
+      <span class="tl-mark" aria-hidden="true"></span>
+      <div class="tl-card">
+        <p class="tl-t">Por confirmar</p>
+        <p class="tl-ev">Baile de Novios</p>
+        <p class="tl-de">El primer vals de Rosa &amp; Jorge</p>
+      </div>
     </div>
-    <div class="tl-row" data-side="left">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Baile General</p><p class="tl-de">¡Todos a la pista!</p></div>
+    <div class="tl-row">
+      <span class="tl-mark" aria-hidden="true"></span>
+      <div class="tl-card">
+        <p class="tl-t">Por confirmar</p>
+        <p class="tl-ev">Baile General</p>
+        <p class="tl-de">¡Todos a la pista!</p>
+      </div>
     </div>
-    <div class="tl-row" data-side="right">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Brindis</p><p class="tl-de">Por los novios · Por el amor</p></div>
+    <div class="tl-row">
+      <span class="tl-mark" aria-hidden="true"></span>
+      <div class="tl-card">
+        <p class="tl-t">Por confirmar</p>
+        <p class="tl-ev">Brindis</p>
+        <p class="tl-de">Por los novios · Por el amor</p>
+      </div>
     </div>
-    <div class="tl-row" data-side="left">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner"><p class="tl-t">Por confirmar</p><p class="tl-ev">Fiesta</p><p class="tl-de">¡Que comience la celebración!</p></div>
+    <div class="tl-row">
+      <span class="tl-mark" aria-hidden="true"></span>
+      <div class="tl-card">
+        <p class="tl-t">Por confirmar</p>
+        <p class="tl-ev">Fiesta</p>
+        <p class="tl-de">¡Que comience la celebración!</p>
+      </div>
     </div>
   </div>
 </section>
@@ -2152,12 +2071,12 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
   <div class="wheel-scene" id="wheel-scene" style="position:relative;width:100%;height:520px;margin:40px auto 0;perspective:1400px;transform-style:preserve-3d;overflow:visible">
     <div class="wheel-ring" id="wheel-ring" style="position:absolute;width:100%;height:100%;transform-style:preserve-3d;cursor:grab">
-      <div class="wheel-card"><img src="assets/gallery/foto-1.jpg" alt="Rosa y Jorge" loading="lazy"></div>
-      <div class="wheel-card"><img src="assets/gallery/foto-2.jpg" alt="Rosa y Jorge en familia" loading="lazy"></div>
-      <div class="wheel-card"><img src="assets/gallery/foto-3.jpg" alt="Rosa y Jorge" loading="lazy"></div>
-      <div class="wheel-card"><img src="assets/gallery/foto-4.jpg" alt="Rosa y Jorge" loading="lazy"></div>
-      <div class="wheel-card"><img src="assets/gallery/foto-5.jpg" alt="Rosa y Jorge" loading="lazy"></div>
-      <div class="wheel-card"><img src="assets/gallery/foto-6.jpg" alt="Rosa y Jorge" loading="lazy"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-1.jpg" alt="Rosa y Jorge" loading="lazy" style="object-position:60% center"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-2.jpg" alt="Rosa y Jorge en familia" loading="lazy" style="object-position:50% center"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-3.jpg" alt="Rosa y Jorge" loading="lazy" style="object-position:50% center"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-4.jpg" alt="Rosa y Jorge" loading="lazy" style="object-position:55% center"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-5.jpg" alt="Rosa y Jorge" loading="lazy" style="object-position:47% center"></div>
+      <div class="wheel-card"><img src="assets/gallery/foto-6.jpg" alt="Rosa y Jorge" loading="lazy" style="object-position:72% center"></div>
     </div>
   </div>
   <p class="gal-hint" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:3px;color:var(--olive);margin-top:24px;opacity:.8">Arrastra para girar</p>
@@ -2177,19 +2096,62 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
 <!-- ═══════════════ 12. RSVP ═════════════════════════ -->
 <section id="rsvp">
-  <span class="lbl">Confirmación de asistencia</span>
-  <h2 class="ttl">¿Nos acompañas?</h2>
-  <div class="gline"></div>
-  <p class="rsvp-sub">Confirma antes del<br><span class="rsvp-dl">7 de Noviembre de 2026</span></p>
+  <div class="rsvp-card">
+    <!-- Esquinas decorativas -->
+    <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--olive)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--olive)" opacity=".5"/></svg>
+    <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--olive)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--olive)" opacity=".5"/></svg>
+    <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--olive)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--olive)" opacity=".5"/></svg>
+    <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--olive)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--olive)" opacity=".5"/></svg>
 
-  <div id="rsvpPanel">
-    <p id="rsvpGreeting" style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--cream);text-align:center;line-height:1.6;margin-bottom:8px"></p>
-    <p id="rsvpPases" style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--olive);text-align:center;margin-bottom:28px"></p>
-    <button type="button" class="btn btn-olive" id="rsvpConfirmBtn" onclick="confirmRSVP()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      Confirmar asistencia
-    </button>
-    <p id="rsvpStatus" style="text-align:center;font-size:12px;color:var(--olive);margin-top:16px;display:none"></p>
+    <div class="rsvp-inner">
+      <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
+        <g stroke="var(--olive)" stroke-width=".9" opacity=".8" fill="none">
+          <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
+          <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
+          <circle cx="160" cy="28" r="5.5"/>
+          <circle cx="160" cy="28" r="2" fill="var(--olive)" stroke="none"/>
+          <path d="M148 28 L154 28" opacity=".5"/>
+          <path d="M166 28 L172 28" opacity=".5"/>
+          <path d="M154 20 Q160 13 166 20" opacity=".55"/>
+          <path d="M154 36 Q160 43 166 36" opacity=".55"/>
+        </g>
+      </svg>
+
+      <div class="eyebrow">Confirmación de asistencia</div>
+      <h2 class="rsvp-title">Tu presencia lo <em>significa</em> todo</h2>
+      <p class="rsvp-text">Por favor confírmanos tu asistencia antes del <strong>7 de Noviembre de 2026</strong>. Nos hará muy felices saber que estarás con nosotros.</p>
+
+      <p id="rsvp-name-display" style="display:none;font-family:'Great Vibes',cursive;font-size:clamp(30px,7vw,44px);color:var(--olive);line-height:1.2;margin:18px auto 4px;"></p>
+
+      <div class="rsvp-divider">
+        <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+      </div>
+
+      <p id="rsvp-pases-note"></p>
+
+      <div class="rsvp-pases-display" id="rsvp-pases-display">
+        <div class="rsvp-pases-label">Pases reservados</div>
+        <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
+      </div>
+
+      <div class="rsvp-toggle">
+        <button class="rsvp-toggle-btn" id="btnYes" type="button">¡Sí, asistiré!</button>
+        <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
+      </div>
+
+      <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
+
+      <button class="rsvp-btn" id="rsvp-confirm-btn" type="button">
+        <span id="rsvp-btn-text">Confirmar</span>
+      </button>
+
+      <p id="rsvp-feedback"></p>
+
+      <div class="rsvp-deadline">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+        Fecha límite · 7 de Noviembre 2026
+      </div>
+    </div>
   </div>
 
   <!-- Mensaje: solo adultos -->
@@ -2602,8 +2564,14 @@ function scrollAnims() {
     }
   });
 
-  // Countdown rings — entrada suave (sin scale, evita que queden encogidos)
-  gsap.from('.cd-ring-item', {
+  // Invitación familiar — fade escalonado
+  gsap.from('#invite .inv-wrap > *', {
+    opacity: 0, y: 20, duration: .7, stagger: .12, ease,
+    scrollTrigger: { trigger: '#invite', start: 'top 82%', once: true }
+  });
+
+  // Countdown — entrada suave de las tarjetas
+  gsap.from('.cd-unit', {
     opacity: 0, y: 22,
     duration: .65, stagger: .11,
     ease: 'power3.out',
@@ -2630,21 +2598,12 @@ function scrollAnims() {
     scrollTrigger: { trigger: '#calendar', start: 'top 84%', once: true }
   });
 
-  // Timeline — camino en S que se dibuja al hacer scroll
-  buildTimelinePath();
-  ScrollTrigger.create({
-    trigger: '#itinerary',
-    start: 'top 78%',
-    end:   'bottom 58%',
-    scrub: 0.6,
-    onUpdate(self) {
-      const data = window.__tlData;
-      if (!data) return;
-      const { path, len, rows } = data;
-      path.style.strokeDashoffset = len * (1 - self.progress);
-      const n = Math.ceil(self.progress * rows.length);
-      rows.forEach((r, i) => r.classList.toggle('on', i < n));
-    }
+  // Itinerario — revela cada fila progresivamente al hacer scroll
+  document.querySelectorAll('#itinerary .tl-row').forEach((row, i) => {
+    ScrollTrigger.create({
+      trigger: row, start: 'top 88%', once: true,
+      onEnter() { setTimeout(() => row.classList.add('on'), i * 60); }
+    });
   });
 
   // Dress code
@@ -2685,10 +2644,18 @@ function scrollAnims() {
     scrollTrigger: { trigger: '#gallery', start: 'top 82%', once: true }
   });
 
-  // RSVP form fields
-  gsap.from(['#fg1','#fg2','#fg4'], {
-    opacity: 0, y: 18, duration: .55, stagger: .12, ease,
-    scrollTrigger: { trigger: '#rsvp', start: 'top 80%', once: true }
+  // RSVP card (diseño boda-jennifer)
+  gsap.fromTo('.rsvp-card', { opacity: 0, y: 40, scale: .97 }, {
+    opacity: 1, y: 0, scale: 1, duration: 1.1, ease: 'power4.out',
+    scrollTrigger: { trigger: '.rsvp-card', start: 'top 82%', once: true }
+  });
+  gsap.fromTo('.rsvp-ornament', { opacity: 0, scaleX: 0 }, {
+    opacity: 1, scaleX: 1, duration: 1.1, ease: 'power3.out',
+    scrollTrigger: { trigger: '.rsvp-ornament', start: 'top 88%', once: true }
+  });
+  gsap.fromTo('.rsvp-corner', { opacity: 0, scale: .5 }, {
+    opacity: 1, scale: 1, duration: 1, stagger: .08, ease: 'back.out(2)',
+    scrollTrigger: { trigger: '.rsvp-card', start: 'top 82%', once: true }
   });
 
   // Footer
@@ -2722,23 +2689,12 @@ function countdown() {
   document.getElementById('cd-h').textContent = pad(hrs);
   document.getElementById('cd-m').textContent = pad(mins);
 
-  setRing('ring-d', Math.min(days / 365, 1));
-  setRing('ring-h', hrs / 24);
-  setRing('ring-m', mins / 60);
-  setRing('ring-s', secs / 60);
-
   const sEl = document.getElementById('cd-s');
   const ns  = pad(secs);
   if (ns !== prevS) {
     gsap.fromTo(sEl, { y: -10, opacity: .2 }, { y: 0, opacity: 1, duration: .28, ease: 'power2.out' });
     sEl.textContent = ns;
     prevS = ns;
-    const item = document.getElementById('cd-item-s');
-    if (item) {
-      item.classList.remove('tick');
-      void item.offsetWidth;
-      item.classList.add('tick');
-    }
   }
 }
 
@@ -2753,59 +2709,163 @@ function toggleMusic() {
   playing = !playing;
 }
 
-/* ── RSVP — PANEL DE INVITADOS ──────────────────────── */
-const RSVP_SLUG = 'boda-rosa-y-jorge';
-const RSVP_API  = 'https://panel-invitados.vercel.app/api/confirmar';
+/* ── RSVP — PANEL DE INVITADOS (diseño boda-jennifer) ── */
+(function(){
+  var PANEL_API = 'https://panel-invitados.vercel.app/api/confirmar';
+  var RSVP_URL  = 'https://boda-rosa-y-jorge.vercel.app';
+  var DEADLINE  = new Date(2026, 10, 7, 23, 59, 59, 999); // 7 nov 2026
+  var frozen    = Date.now() > DEADLINE.getTime();
 
-(function initRSVP() {
-  const params  = new URLSearchParams(window.location.search);
-  const para    = params.get('para') || '';
-  const pases   = parseInt(params.get('pases'), 10) || 1;
-  const greet   = document.getElementById('rsvpGreeting');
-  const pasesEl = document.getElementById('rsvpPases');
+  var params    = new URLSearchParams(window.location.search);
+  var urlPara   = (params.get('para')  || '').trim();
+  var rawP      = parseInt(params.get('pases') || '1', 10);
+  var urlPases  = (isNaN(rawP) || rawP < 1 || rawP > 20) ? 1 : rawP;
 
-  if (para) {
-    greet.textContent = `¡Hola, ${para}!`;
-    pasesEl.textContent = pases === 1
-      ? 'Tienes 1 pase asignado'
-      : `Tienes ${pases} pases asignados`;
-  } else {
-    greet.textContent = '¡Hola!';
-    pasesEl.textContent = 'Confirma tu asistencia';
+  var rsvpChoice  = null;
+  var pasesNumEl  = document.getElementById('rsvp-pases-num');
+  var fieldsEl    = document.getElementById('rsvp-fields');
+  var btnYes      = document.getElementById('btnYes');
+  var btnNo       = document.getElementById('btnNo');
+  var confirmBtn  = document.getElementById('rsvp-confirm-btn');
+  var btnText     = document.getElementById('rsvp-btn-text');
+  var feedbackEl  = document.getElementById('rsvp-feedback');
+
+  if (pasesNumEl) pasesNumEl.textContent = urlPases;
+
+  var rsvpNameEl = document.getElementById('rsvp-name-display');
+  if (urlPara && rsvpNameEl) {
+    rsvpNameEl.textContent = urlPara;
+    rsvpNameEl.style.display = '';
+  }
+
+  function renderFields(count) {
+    if (!fieldsEl) return;
+    fieldsEl.innerHTML = '';
+    for (var i = 0; i < count; i++) {
+      var inp = document.createElement('input');
+      inp.className = 'rsvp-input';
+      inp.type = 'text';
+      inp.placeholder = 'Invitado ' + (i + 1);
+      inp.autocomplete = 'off';
+      fieldsEl.appendChild(inp);
+    }
+  }
+
+  function selectRsvp(choice) {
+    rsvpChoice = choice;
+    if (btnYes) {
+      btnYes.classList.toggle('rsvp-toggle-selected-yes', choice === 'yes');
+      btnYes.classList.remove('rsvp-toggle-selected-no');
+    }
+    if (btnNo) {
+      btnNo.classList.toggle('rsvp-toggle-selected-no', choice === 'no');
+      btnNo.classList.remove('rsvp-toggle-selected-yes');
+    }
+    if (fieldsEl) {
+      if (choice === 'yes') {
+        renderFields(urlPases);
+        fieldsEl.style.display = '';
+      } else {
+        fieldsEl.innerHTML = '';
+        fieldsEl.style.display = 'none';
+      }
+    }
+  }
+
+  if (urlPara) {
+    fetch(PANEL_API + '?nombre=' + encodeURIComponent(urlPara) + '&url_boda=' + encodeURIComponent(RSVP_URL))
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (!d.ok || !d.invitado) return;
+        var inv = d.invitado;
+        if (inv.estado === 'confirmado') {
+          selectRsvp('yes');
+          if (btnText) btnText.textContent = 'Actualizar respuesta';
+          var prev = inv.nombres_confirmados || [];
+          if (prev.length > 0 && fieldsEl) {
+            var inputs = fieldsEl.querySelectorAll('input');
+            prev.forEach(function(n, i){ if (inputs[i]) inputs[i].value = n; });
+          }
+        } else if (inv.estado === 'declino') {
+          selectRsvp('no');
+          if (btnText) btnText.textContent = 'Actualizar respuesta';
+        }
+      }).catch(function(){});
+  }
+
+  if (frozen) {
+    if (btnYes) { btnYes.disabled = true; }
+    if (btnNo)  { btnNo.disabled  = true; }
+    if (confirmBtn) { confirmBtn.disabled = true; }
+    if (btnText) btnText.textContent = 'Fecha límite vencida';
+    return;
+  }
+
+  if (btnYes) btnYes.addEventListener('click', function(){ selectRsvp('yes'); });
+  if (btnNo)  btnNo.addEventListener('click',  function(){ selectRsvp('no'); });
+
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', function(){
+      if (!rsvpChoice) {
+        if (feedbackEl) {
+          feedbackEl.textContent = 'Por favor indícanos si podrás asistir.';
+          feedbackEl.style.display = '';
+          feedbackEl.style.color = 'var(--olive)';
+        }
+        return;
+      }
+      var nombres = [];
+      if (rsvpChoice === 'yes' && fieldsEl) {
+        nombres = Array.from(fieldsEl.querySelectorAll('input'))
+          .map(function(i){ return i.value.trim(); })
+          .filter(function(n){ return n.length > 0; });
+      }
+      var nombre = urlPara || (nombres[0] || '');
+      if (!nombre) {
+        if (feedbackEl) {
+          feedbackEl.textContent = 'Por favor escribe tu nombre.';
+          feedbackEl.style.display = '';
+          feedbackEl.style.color = 'var(--olive)';
+        }
+        return;
+      }
+      confirmBtn.disabled = true;
+      if (btnText) btnText.textContent = 'Enviando…';
+      fetch(PANEL_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: nombre,
+          url_boda: RSVP_URL,
+          estado: rsvpChoice === 'yes' ? 'confirmado' : 'declino',
+          pases_confirmados: rsvpChoice === 'yes' ? (nombres.length || urlPases) : 0,
+          nombres_confirmados: rsvpChoice === 'yes' ? nombres : []
+        })
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(){
+        confirmBtn.disabled = false;
+        if (btnText) btnText.textContent = 'Actualizar respuesta';
+        if (feedbackEl) {
+          feedbackEl.style.display = '';
+          feedbackEl.style.color = rsvpChoice === 'yes' ? '#4a7848' : 'var(--olive)';
+          feedbackEl.textContent = rsvpChoice === 'yes'
+            ? '¡Gracias! Tu asistencia fue registrada. ✦'
+            : 'Respuesta guardada. ¡Gracias por avisarnos!';
+        }
+      })
+      .catch(function(){
+        confirmBtn.disabled = false;
+        if (btnText) btnText.textContent = 'Confirmar';
+        if (feedbackEl) {
+          feedbackEl.style.display = '';
+          feedbackEl.style.color = '#B85042';
+          feedbackEl.textContent = 'Error de conexión. Intenta de nuevo.';
+        }
+      });
+    });
   }
 })();
-
-function confirmRSVP() {
-  const params = new URLSearchParams(window.location.search);
-  const para   = params.get('para') || 'Invitado';
-  const pases  = parseInt(params.get('pases'), 10) || 1;
-  const btn    = document.getElementById('rsvpConfirmBtn');
-  const status = document.getElementById('rsvpStatus');
-
-  btn.style.pointerEvents = 'none';
-  btn.style.opacity = '.6';
-  btn.textContent = 'Enviando…';
-
-  fetch(RSVP_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ slug: RSVP_SLUG, nombre: para, pases: pases, confirmado: true })
-  })
-  .then(r => r.json())
-  .then(() => {
-    btn.innerHTML = '✓ ¡Confirmado!';
-    btn.style.opacity = '1';
-    status.textContent = 'Tu confirmación fue registrada. ¡Te esperamos!';
-    status.style.display = 'block';
-    toast('¡Asistencia confirmada!');
-  })
-  .catch(() => {
-    btn.textContent = 'Confirmar asistencia';
-    btn.style.pointerEvents = '';
-    btn.style.opacity = '';
-    toast('Error al confirmar. Intenta de nuevo.');
-  });
-}
 
 /* ── COPY CLABE ──────────────────────────────────────── */
 function copyClabe() {
