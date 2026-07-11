@@ -1362,16 +1362,16 @@ footer{background:#f0ead9}
 .rsvp-adults{
   margin:0 auto 30px;text-align:center;max-width:400px;
   position:relative;padding:22px 20px;
-  background:linear-gradient(180deg,rgba(212,197,178,.16) 0%,rgba(255,255,255,.5) 100%);
-  border:1px solid rgba(168,180,120,.24);border-radius:16px;
+  background:linear-gradient(180deg,rgba(212,197,178,.28) 0%,rgba(255,255,255,.6) 100%);
+  border:2px solid rgba(117,140,98,.45);border-radius:16px;
 }
 .rsvp-adults-line{
   width:44px;height:1px;margin:0 auto 20px;
   background:linear-gradient(to right,transparent,var(--olive),transparent);
 }
 .rsvp-adults-lbl{
-  font-size:9px;letter-spacing:5px;text-transform:uppercase;
-  color:var(--olive);margin-bottom:12px;
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--cream);font-weight:700;margin-bottom:12px;
 }
 .rsvp-adults-msg{
   font-family:'Cormorant Garamond',serif;
@@ -1895,8 +1895,8 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 <section id="hero">
   <!-- Background photo (parallax target) -->
   <div class="h-bg" id="heroBg">
-    <img src="assets/gallery/foto-3.jpg"
-         alt="Rosa y Jorge" loading="eager" id="heroPic" style="object-position:40% center">
+    <img src="assets/gallery/foto-hero.jpg"
+         alt="Rosa y Jorge" loading="eager" id="heroPic" style="object-position:center center">
   </div>
   <div class="h-ov"></div>
   <div class="h-frame"></div>
@@ -2108,40 +2108,6 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
       <div class="itv3-ev">Recepción</div>
     </div>
 
-    <div class="itv3-item">
-      <div class="itv3-gem itv3-gem-mid"></div>
-      <div class="itv3-time">—</div>
-      <div class="itv3-ev">Cena</div>
-      <div class="itv3-sub">Por confirmar</div>
-    </div>
-
-    <div class="itv3-item">
-      <div class="itv3-gem itv3-gem-beige"></div>
-      <div class="itv3-time">—</div>
-      <div class="itv3-ev">Baile de Novios</div>
-      <div class="itv3-sub">Por confirmar</div>
-    </div>
-
-    <div class="itv3-item">
-      <div class="itv3-gem"></div>
-      <div class="itv3-time">—</div>
-      <div class="itv3-ev">Baile General</div>
-      <div class="itv3-sub">Por confirmar</div>
-    </div>
-
-    <div class="itv3-item">
-      <div class="itv3-gem itv3-gem-mid"></div>
-      <div class="itv3-time">—</div>
-      <div class="itv3-ev">Brindis</div>
-      <div class="itv3-sub">Por confirmar</div>
-    </div>
-
-    <div class="itv3-item">
-      <div class="itv3-gem itv3-gem-beige"></div>
-      <div class="itv3-time">—</div>
-      <div class="itv3-ev">Fiesta</div>
-      <div class="itv3-sub">Por confirmar</div>
-    </div>
   </div>
 </section>
 
@@ -2183,6 +2149,17 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </button>
 
     <p class="gf-bc-foot">✦ &nbsp; Toca una cuenta para copiarla &nbsp; ✦</p>
+  </div>
+
+  <!-- Lista de novios Falabella -->
+  <div style="margin-top:32px;text-align:center;padding:28px 20px;background:linear-gradient(180deg,rgba(212,197,178,.14) 0%,rgba(255,255,255,.5) 100%);border:1px solid rgba(168,180,120,.24);border-radius:16px;max-width:400px;margin-left:auto;margin-right:auto;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--olive);margin-bottom:10px;">Lista de novios</p>
+    <a href="https://noviosfalabella.com.pe" target="_blank" rel="noopener" style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--cream);text-decoration:underline;text-underline-offset:4px;display:block;margin-bottom:14px;">noviosfalabella.com.pe</a>
+    <p style="font-family:'Lato',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--olive);margin-bottom:4px;">Código</p>
+    <button onclick="copyVal('falabellaCode','Código Falabella')" type="button" style="background:none;border:1px solid rgba(168,180,120,.35);border-radius:10px;padding:10px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;">
+      <span id="falabellaCode" style="font-family:'Cinzel',serif;font-size:18px;letter-spacing:3px;color:var(--cream);">737401-01</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--olive)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    </button>
   </div>
 </section>
 
@@ -2364,6 +2341,8 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
         Fecha límite · 7 de Noviembre 2026
       </div>
+
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;line-height:1.7;color:var(--cream);opacity:.65;text-align:center;margin-top:24px;max-width:340px;margin-left:auto;margin-right:auto;">*Esta invitación es solo para las personas mencionadas en ella. Gracias.*</p>
     </div>
   </div>
 </section>
