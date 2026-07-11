@@ -338,21 +338,29 @@ footer{background:#f0ead9}
   line-height:1.9;letter-spacing:.3px;
 }
 .inv-quote{
-  font-family:'Playfair Display',serif;
-  font-style:italic;font-weight:400;
-  font-size:clamp(17px,4.5vw,21px);
-  color:var(--cream);opacity:.88;
-  line-height:2;margin-top:26px;
+  font-family:'Great Vibes',cursive;
+  font-weight:400;
+  font-size:clamp(26px,7vw,34px);
+  color:var(--olive);
+  line-height:1.5;margin-top:28px;
   max-width:320px;margin-left:auto;margin-right:auto;
-  text-align:center;letter-spacing:.3px;
+  text-align:center;
 }
 .inv-date{
-  font-family:'Dancing Script',cursive;
-  font-size:clamp(30px,8vw,42px);font-weight:600;
-  color:var(--olive);
-  margin-top:52px;
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-weight:600;
+  font-size:clamp(18px,5vw,24px);
+  color:var(--cream);letter-spacing:3px;
+  margin-top:60px;
   position:relative;display:inline-block;
 }
+.inv-date::before,.inv-date::after{
+  content:'';position:absolute;top:50%;
+  width:40px;height:1px;
+  background:linear-gradient(to var(--dir),var(--olive),transparent);
+}
+.inv-date::before{--dir:left;right:calc(100% + 14px)}
+.inv-date::after{--dir:right;left:calc(100% + 14px)}
 
 /* ── HERO ─────────────────────────────────────────────── */
 #hero{
