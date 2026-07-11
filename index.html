@@ -337,20 +337,28 @@ footer{background:#f0ead9}
   font-size:16px;color:var(--cream);opacity:.82;
   line-height:1.9;letter-spacing:.3px;
 }
-.inv-date{
-  font-family:'Cormorant Garamond',serif;
-  font-size:19px;font-weight:600;
-  color:var(--olive);letter-spacing:2px;
-  text-transform:uppercase;margin-top:16px;
-}
 .inv-quote{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(16px,4.2vw,20px);font-style:italic;font-weight:300;
-  color:var(--cream);opacity:.82;
-  line-height:1.9;margin-top:22px;
+  font-family:'Italianno',cursive;
+  font-size:clamp(24px,6.5vw,32px);font-weight:400;
+  color:var(--cream);
+  line-height:1.6;margin-top:26px;
   max-width:340px;margin-left:auto;margin-right:auto;
   text-align:center;
 }
+.inv-date{
+  font-family:'Cinzel',serif;
+  font-size:clamp(13px,3.6vw,16px);font-weight:600;
+  color:var(--olive);letter-spacing:4px;
+  text-transform:uppercase;margin-top:28px;
+  position:relative;display:inline-block;
+}
+.inv-date::before,.inv-date::after{
+  content:'';position:absolute;top:50%;
+  width:32px;height:1px;
+  background:linear-gradient(to var(--dir),var(--olive),transparent);
+}
+.inv-date::before{--dir:left;right:calc(100% + 12px)}
+.inv-date::after{--dir:right;left:calc(100% + 12px)}
 
 /* ── HERO ─────────────────────────────────────────────── */
 #hero{
@@ -1971,7 +1979,8 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     <p class="inv-lead">En compañía de nuestro mayor tesoro</p>
     <p class="inv-children">Misael · Stephano · Thiago</p>
     <div class="gline" style="margin:24px auto"></div>
-    <p class=”inv-quote”>”Nuestro amor ha crecido con cada día compartido y ahora queremos sellarlo con una promesa eterna. Nos llenaría de felicidad contar con tu presencia en este día tan especial.”</p>
+    <p class=”inv-quote”>Nuestro amor ha crecido con cada día compartido y ahora queremos sellarlo con una promesa eterna. Nos llenaría de felicidad contar con tu presencia en este día tan especial.</p>
+    <span class=”inv-orn” aria-hidden=”true” style=”margin-top:20px”>✦</span>
     <p class=”inv-date”>el 28 de Noviembre de 2026</p>
   </div>
 </section>
