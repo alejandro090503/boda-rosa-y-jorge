@@ -1361,6 +1361,17 @@ footer{background:#f0ead9}
 .rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(117,140,98,.14);border-color:var(--olive);color:#3A412A;}
 .rsvp-toggle-btn.rsvp-toggle-selected-no{background:rgba(212,197,178,.25);border-color:var(--olive);color:var(--olive);}
 .rsvp-fields{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto 20px;}
+.rsvp-asignados{display:flex;flex-direction:column;gap:12px;max-width:460px;margin:0 auto 22px}
+.rsvp-person-card{display:flex;flex-direction:column;gap:10px;padding:14px 16px;background:rgba(255,255,255,.75);border:1.5px solid rgba(168,180,120,.32);border-radius:14px;transition:border-color .25s,background .25s}
+.rsvp-person-card[data-choice="yes"]{border-color:var(--olive);background:rgba(117,140,98,.10)}
+.rsvp-person-card[data-choice="no"]{border-color:rgba(212,197,178,.6);background:rgba(212,197,178,.20)}
+.rsvp-person-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:600;color:var(--cream);letter-spacing:.02em;text-align:center}
+.rsvp-person-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rsvp-mini-btn{padding:10px 12px;border:1.5px solid rgba(168,180,120,.32);border-radius:10px;background:rgba(255,255,255,.6);font-family:'Lato',sans-serif;font-size:12px;font-weight:600;color:var(--cream);letter-spacing:.06em;cursor:pointer;transition:all .25s;text-transform:uppercase;-webkit-tap-highlight-color:transparent;min-height:42px}
+.rsvp-mini-btn:hover:not(:disabled){border-color:var(--olive);background:rgba(255,255,255,.9)}
+.rsvp-mini-btn:disabled{opacity:.55;cursor:not-allowed}
+.rsvp-mini-yes-on{background:var(--olive)!important;border-color:var(--olive)!important;color:#fff!important}
+.rsvp-mini-no-on{background:#8a7a68!important;border-color:#8a7a68!important;color:#fff!important}
 .rsvp-input{width:100%;padding:15px 20px;border:1.5px solid rgba(168,180,120,.28);border-radius:12px;background:rgba(255,255,255,.8);font-family:'Lato',sans-serif;font-size:15px;color:var(--cream);letter-spacing:.03em;outline:none;transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;min-height:52px;}
 .rsvp-input:focus{border-color:var(--olive);box-shadow:0 0 0 3px rgba(168,180,120,.15);background:rgba(255,255,255,.96);}
 .rsvp-input::placeholder{color:var(--cream);opacity:.45;}
@@ -1852,6 +1863,61 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   transform-origin:left center;will-change:transform,opacity;
   filter:drop-shadow(0 0 4px rgba(168,180,120,.55));
 }
+
+/* ═══════════════════════════════════════════════════════
+   PADRINOS
+   ═══════════════════════════════════════════════════════ */
+#padrinos{
+  background:linear-gradient(180deg,#ffffff 0%,rgba(212,197,178,.16) 100%);
+}
+.pad-intro{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:15px;line-height:1.8;color:var(--cream);opacity:.66;
+  text-align:center;max-width:330px;margin:14px auto 34px;
+}
+.pad-list{
+  display:flex;flex-direction:column;gap:20px;
+  max-width:400px;margin:0 auto;
+}
+.pad-card{
+  position:relative;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(168,180,120,.30);
+  border-radius:20px;
+  padding:30px 26px 28px;
+  text-align:center;
+  box-shadow:0 14px 40px rgba(58,65,42,.07);
+  overflow:hidden;
+}
+.pad-card::before{
+  content:'';position:absolute;inset:7px;
+  border:1px solid rgba(168,180,120,.16);
+  border-radius:14px;pointer-events:none;
+}
+.pad-ico{
+  width:46px;height:46px;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 40%,rgba(117,140,98,.16),rgba(117,140,98,.05));
+  border:1px solid rgba(117,140,98,.28);
+}
+.pad-ico svg{width:24px;height:24px;stroke:var(--olive);fill:none;}
+.pad-role{
+  font-family:'Lato',sans-serif;font-weight:400;
+  font-size:9.5px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--olive);margin-bottom:10px;
+}
+.pad-names{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(26px,7vw,32px);line-height:1.3;
+  color:var(--cream);
+}
+.pad-amp{
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:15px;color:var(--olive);
+  opacity:.7;margin:1px 0;
+}
   </style>
 </head>
 <body>
@@ -1910,7 +1976,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <!-- Background photo (parallax target) -->
   <div class="h-bg" id="heroBg">
     <img src="assets/gallery/foto-hero.jpg"
-         alt="Rosa y Jorge" loading="eager" id="heroPic" style="object-position:center center">
+         alt="Rosa y Jorge" loading="eager" id="heroPic" style="object-position:center top;transform:scale(1.42);transform-origin:center top">
   </div>
   <div class="h-ov"></div>
   <div class="h-frame"></div>
@@ -2118,6 +2184,33 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
       <div class="itv3-ev">Recepción</div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ═══════════════ 6. PADRINOS ══════════════════════ -->
+<section id="padrinos">
+  <span class="lbl">Con la bendición de</span>
+  <h2 class="ttl">Nuestros Padrinos</h2>
+  <div class="gline"></div>
+  <p class="pad-intro">Quienes nos acompañan y bendicen<br>en este paso tan importante.</p>
+
+  <div class="pad-list">
+    <div class="pad-card">
+      <div class="pad-ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="14" r="6"/><path d="M9 4.5 L7.5 7 L10.5 7 Z" fill="var(--olive)" stroke="none"/><path d="M15 4.5 L13.5 7 L16.5 7 Z" fill="var(--olive)" stroke="none"/></svg>
+      </div>
+      <p class="pad-role">Matrimonio Religioso</p>
+      <p class="pad-names">Saúl Chauca<span class="pad-amp">&amp;</span>Lourdes Alarcón</p>
+    </div>
+
+    <div class="pad-card">
+      <div class="pad-ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12 C8 8 3 9 3 13 C3 16 7 17 9 13 C11 9 13 9 15 13 C17 17 21 16 21 13 C21 9 16 8 12 12 Z"/></svg>
+      </div>
+      <p class="pad-role">Lazo</p>
+      <p class="pad-names">Rosa Chauca</p>
+    </div>
   </div>
 </section>
 
@@ -2335,7 +2428,9 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
         <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
       </div>
 
-      <div class="rsvp-toggle">
+      <div class="rsvp-asignados" id="rsvp-asignados" style="display:none"></div>
+
+      <div class="rsvp-toggle" id="rsvp-toggle-std">
         <button class="rsvp-toggle-btn" id="btnYes" type="button">¡Sí, asistiré!</button>
         <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
       </div>
@@ -2849,6 +2944,16 @@ function scrollAnims() {
   });
 
 
+  // Padrinos
+  gsap.from('#padrinos .pad-card', {
+    opacity: 0, y: 28, scale: .97, duration: .7, stagger: .14, ease,
+    scrollTrigger: { trigger: '#padrinos', start: 'top 82%', once: true }
+  });
+  gsap.from('#padrinos .pad-intro', {
+    opacity: 0, y: 16, duration: .6, ease,
+    scrollTrigger: { trigger: '#padrinos', start: 'top 82%', once: true }
+  });
+
   // Gifts
   gsap.from('.gf-bankcard', {
     opacity: 0, y: 26, scale: .97, duration: .7, ease,
@@ -2994,6 +3099,43 @@ else if (musicEl) musicEl.addEventListener('canplay', tryAutoMusic, { once: true
   var confirmBtn  = document.getElementById('rsvp-confirm-btn');
   var btnText     = document.getElementById('rsvp-btn-text');
   var feedbackEl  = document.getElementById('rsvp-feedback');
+  var toggleEl    = document.getElementById('rsvp-toggle-std');
+  var asigEl      = document.getElementById('rsvp-asignados');
+  var nombresAsignados = [];
+  var asignadosChoices = {};
+
+  function renderAsignados(){
+    if (!asigEl) return;
+    asigEl.innerHTML = '';
+    nombresAsignados.forEach(function(nm, idx){
+      var card = document.createElement('div');
+      card.className = 'rsvp-person-card';
+      var choice = asignadosChoices[idx];
+      if (choice) card.setAttribute('data-choice', choice);
+      var name = document.createElement('div');
+      name.className = 'rsvp-person-name';
+      name.textContent = nm;
+      var tog = document.createElement('div');
+      tog.className = 'rsvp-person-toggle';
+      var bY = document.createElement('button');
+      bY.type = 'button';
+      bY.className = 'rsvp-mini-btn' + (choice === 'yes' ? ' rsvp-mini-yes-on' : '');
+      bY.textContent = 'Asistiré';
+      bY.disabled = frozen;
+      bY.addEventListener('click', function(){ if (frozen) return; asignadosChoices[idx] = 'yes'; renderAsignados(); });
+      var bN = document.createElement('button');
+      bN.type = 'button';
+      bN.className = 'rsvp-mini-btn' + (choice === 'no' ? ' rsvp-mini-no-on' : '');
+      bN.textContent = 'No asistiré';
+      bN.disabled = frozen;
+      bN.addEventListener('click', function(){ if (frozen) return; asignadosChoices[idx] = 'no'; renderAsignados(); });
+      tog.appendChild(bY);
+      tog.appendChild(bN);
+      card.appendChild(name);
+      card.appendChild(tog);
+      asigEl.appendChild(card);
+    });
+  }
 
   if (pasesNumEl) pasesNumEl.textContent = urlPases;
 
@@ -3043,6 +3185,39 @@ else if (musicEl) musicEl.addEventListener('canplay', tryAutoMusic, { once: true
       .then(function(d){
         if (!d.ok || !d.invitado) return;
         var inv = d.invitado;
+        if (typeof inv.pases === 'number' && inv.pases > 0 && inv.pases <= 20){
+          urlPases = inv.pases;
+          if (pasesNumEl) pasesNumEl.textContent = urlPases;
+        }
+
+        var tieneAsignados = Array.isArray(inv.nombres_asignados) && inv.nombres_asignados.length > 0;
+        if (tieneAsignados){
+          nombresAsignados = inv.nombres_asignados.slice();
+          if (toggleEl) toggleEl.style.display = 'none';
+          if (fieldsEl) fieldsEl.style.display = 'none';
+          if (asigEl) asigEl.style.display = 'flex';
+          var confirmadosLower = (inv.nombres_confirmados || []).map(function(s){ return String(s).toLowerCase().trim(); });
+          if (inv.estado === 'confirmado' || inv.estado === 'declino'){
+            nombresAsignados.forEach(function(nm, idx){
+              if (inv.estado === 'declino'){
+                asignadosChoices[idx] = 'no';
+              } else {
+                asignadosChoices[idx] = confirmadosLower.indexOf(nm.toLowerCase().trim()) >= 0 ? 'yes' : 'no';
+              }
+            });
+            if (btnText) btnText.textContent = 'Actualizar respuesta';
+            if (feedbackEl){
+              feedbackEl.style.display = '';
+              feedbackEl.style.color = 'var(--olive)';
+              feedbackEl.textContent = inv.estado === 'confirmado'
+                ? '¡Ya tienes registrada tu respuesta! Puedes actualizarla.'
+                : 'Ya tienes registrado que no podrán asistir. Puedes cambiar la respuesta.';
+            }
+          }
+          renderAsignados();
+          return;
+        }
+
         if (inv.estado === 'confirmado') {
           selectRsvp('yes');
           if (btnText) btnText.textContent = 'Actualizar respuesta';
@@ -3071,20 +3246,39 @@ else if (musicEl) musicEl.addEventListener('canplay', tryAutoMusic, { once: true
 
   if (confirmBtn) {
     confirmBtn.addEventListener('click', function(){
-      if (!rsvpChoice) {
-        if (feedbackEl) {
-          feedbackEl.textContent = 'Por favor indícanos si podrás asistir.';
-          feedbackEl.style.display = '';
-          feedbackEl.style.color = 'var(--olive)';
-        }
-        return;
-      }
+      var modoAsignados = nombresAsignados.length > 0;
       var nombres = [];
-      if (rsvpChoice === 'yes' && fieldsEl) {
-        nombres = Array.from(fieldsEl.querySelectorAll('input'))
-          .map(function(i){ return i.value.trim(); })
-          .filter(function(n){ return n.length > 0; });
+      var estadoFinal;
+
+      if (modoAsignados){
+        var faltantes = nombresAsignados.filter(function(_, i){ return !asignadosChoices[i]; });
+        if (faltantes.length > 0){
+          if (feedbackEl){
+            feedbackEl.style.display = '';
+            feedbackEl.style.color = 'var(--olive)';
+            feedbackEl.textContent = 'Por favor responde por cada invitado (' + faltantes.length + ' pendiente' + (faltantes.length === 1 ? '' : 's') + ').';
+          }
+          return;
+        }
+        nombres = nombresAsignados.filter(function(_, i){ return asignadosChoices[i] === 'yes'; });
+        estadoFinal = nombres.length > 0 ? 'confirmado' : 'declino';
+      } else {
+        if (!rsvpChoice) {
+          if (feedbackEl) {
+            feedbackEl.textContent = 'Por favor indícanos si podrás asistir.';
+            feedbackEl.style.display = '';
+            feedbackEl.style.color = 'var(--olive)';
+          }
+          return;
+        }
+        if (rsvpChoice === 'yes' && fieldsEl) {
+          nombres = Array.from(fieldsEl.querySelectorAll('input'))
+            .map(function(i){ return i.value.trim(); })
+            .filter(function(n){ return n.length > 0; });
+        }
+        estadoFinal = rsvpChoice === 'yes' ? 'confirmado' : 'declino';
       }
+
       var nombre = urlPara || (nombres[0] || '');
       if (!nombre) {
         if (feedbackEl) {
@@ -3102,9 +3296,9 @@ else if (musicEl) musicEl.addEventListener('canplay', tryAutoMusic, { once: true
         body: JSON.stringify({
           nombre: nombre,
           url_boda: RSVP_URL,
-          estado: rsvpChoice === 'yes' ? 'confirmado' : 'declino',
-          pases_confirmados: rsvpChoice === 'yes' ? (nombres.length || urlPases) : 0,
-          nombres_confirmados: rsvpChoice === 'yes' ? nombres : []
+          estado: estadoFinal,
+          pases_confirmados: estadoFinal === 'confirmado' ? nombres.length : 0,
+          nombres_confirmados: estadoFinal === 'confirmado' ? nombres : []
         })
       })
       .then(function(r){ return r.json(); })
@@ -3113,10 +3307,14 @@ else if (musicEl) musicEl.addEventListener('canplay', tryAutoMusic, { once: true
         if (btnText) btnText.textContent = 'Actualizar respuesta';
         if (feedbackEl) {
           feedbackEl.style.display = '';
-          feedbackEl.style.color = rsvpChoice === 'yes' ? '#4a7848' : 'var(--olive)';
-          feedbackEl.textContent = rsvpChoice === 'yes'
-            ? '¡Gracias! Tu asistencia fue registrada. ✦'
-            : 'Respuesta guardada. ¡Gracias por avisarnos!';
+          feedbackEl.style.color = estadoFinal === 'confirmado' ? '#4a7848' : 'var(--olive)';
+          if (estadoFinal === 'confirmado'){
+            feedbackEl.textContent = nombres.length === 1
+              ? '¡Confirmado para ' + nombres[0] + '! Nos vemos pronto. ✦'
+              : '¡Confirmado para ' + nombres.length + ' invitados! Nos vemos pronto. ✦';
+          } else {
+            feedbackEl.textContent = 'Respuesta guardada. ¡Gracias por avisarnos!';
+          }
         }
       })
       .catch(function(){
